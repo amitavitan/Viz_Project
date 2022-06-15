@@ -8,4 +8,4 @@ st.dataframe(data)
 # st.write(data.columns)
 
 # st.bar_chart(data[['City', 'Sunshine hours(City)']])
-st.radio('Pick one', list(data['City']))
+x = st.radio('Pick one', list(data['City']), horizontal=True)
