@@ -7,4 +7,4 @@ st.set_page_config(page_title='Tomi', initial_sidebar_state='expanded', layout="
 st.dataframe(data)
 st.write(data.columns)
 
-# st.bar_chart(data[])
+st.bar_chart(data[['City', 'Sunshine hours(City)']])
