@@ -8,4 +8,11 @@ st.dataframe(data)
 # st.write(data.columns)
 
 # st.bar_chart(data[['City', 'Sunshine hours(City)']])
-x = st.radio('Pick one', list(data['City']), horizontal=True)
+selected_ciry = st.radio('Pick one', list(data['City']), horizontal=True)
+if selected_ciry == 'Tel Aviv':
+    st.write('You selected Tel Aviv.')
+    st.bar_chart(data['Sunshine hours(City)'])
+else:
+    st.write("You didn't select comedy.")
+
+# st.bar_chart(chart_data)
