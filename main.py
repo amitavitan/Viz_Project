@@ -65,20 +65,20 @@ df_selection = df.query(
 st.title(":bar_chart: Sales Dashboard")
 st.markdown("##")
 # TOP KPI's
-avg_sunshine = round(df["Sunshine hours(City)"].mean(), 3)
-average_hours_worked = round(df["Annual avg. hours worked"].mean(), 1)
-star_rating = ":star:" * int(round(average_hours_worked, 0))
-average_bottle_cost = round(df["Cost of a bottle of water(City)"].mean(), 2)
+avg_sunshine = round(df_selection["Sunshine hours(City)"].mean(), 3)
+average_hours_worked = round((1/365)*df_selection["Annual avg. hours worked"].mean(), 1)
+star_rating = ":sun:" * int(round(average_hours_worked, 0))
+average_bottle_cost = round(df_selection["Cost of a bottle of water(City)"].mean(), 2)
 
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
     st.subheader("AVG Sunshine:")
     st.subheader(f"{avg_sunshine:,}")
 with middle_column:
-    st.subheader("Average Rating:")
+    st.subheader("Average Hours Worked Per Day:")
     st.subheader(f"{average_hours_worked} {star_rating}")
 with right_column:
-    st.subheader("Average Sales Per Transaction:")
+    st.subheader("Average Bottle Cost:")
     st.subheader(f"IL ₪ {average_bottle_cost}")
 print("2")
 st.markdown("""---""")
