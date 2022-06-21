@@ -67,10 +67,10 @@ city = st.sidebar.multiselect(
     default=df["City"].unique()
 )
 #
-# customer_type = st.sidebar.multiselect(
+# col_chart = st.sidebar.multiselect(
 #     "Select the Customer Type:",
-#     options=df["Customer_type"].unique(),
-#     default=df["Customer_type"].unique(),
+#     options=df.columns,
+#     default=df.columns,
 # )
 #
 # gender = st.sidebar.multiselect(
@@ -107,16 +107,16 @@ with right_column:
 st.markdown("""---""")
 
 # SALES BY PRODUCT LINE [BAR CHART]
-sales_by_product_line = (
-    df.groupby(by=["Life expectancy(years) (Country)"]).sum()[["Happiness levels(Country)"]].sort_values(by="Happiness levels(Country)")
-)
+# sales_by_product_line = (
+#     df.groupby(by=["Life expectancy(years) (Country)"]).sum()[["Happiness levels(Country)"]].sort_values(by="Happiness levels(Country)")
+# )
 fig_product_sales = px.bar(
-    sales_by_product_line,
-    x="Total",
-    y=sales_by_product_line.index,
+    df_selection,
+    x="City",
+    y="Happiness levels(Country)",
     orientation="h",
     title="<b>Sales by Product Line</b>",
-    color_discrete_sequence=["#0083B8"] * len(sales_by_product_line),
+    color_discrete_sequence=["#0083B8"] * len(df_selection),
     template="plotly_white",
 )
 fig_product_sales.update_layout(
