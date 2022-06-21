@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd  # pip install pandas openpyxl
 import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
@@ -65,7 +66,7 @@ df_selection = df.query(
 st.title(":bar_chart: Sales Dashboard")
 st.markdown("##")
 # TOP KPI's
-avg_sunshine = round(df_selection["Sunshine hours(City)"].mean(), 3)
+avg_sunshine = round(df_selection["Sunshine hours(City)"][np.nonzero(df_selection["Sunshine hours(City)"])].mean(), 3)
 average_hours_worked = round((1/365)*df_selection["Annual avg. hours worked"].mean(), 1)
 star_rating = ":sun:" * int(round(average_hours_worked, 0))
 average_bottle_cost = round(df_selection["Cost of a bottle of water(City)"].mean(), 2)
