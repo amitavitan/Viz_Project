@@ -1,19 +1,18 @@
 import pandas as pd
 import streamlit as st
 
-data = pd.read_csv("healthy_lifestyle_city_2021.csv")
-# preprocess
+# data = pd.read_csv("healthy_lifestyle_city_2021.csv")
+# # preprocess
+#
+# # replace pounds to shekels
+# data['Cost of a bottle of water(City)'] = 4.24 * (data['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
+#     float)
+# data['Cost of a monthly gym membership(City)'] = 4.24 * (
+#     data['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
+# # replace % to float value
+# data['Obesity levels(Country)'] = 0.01 * (data['Obesity levels(Country)'].str.replace('%', '')).astype(float)
 
-# replace pounds to shekels
-data['Cost of a bottle of water(City)'] = 4.24 * (data['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
-    float)
-data['Cost of a monthly gym membership(City)'] = 4.24 * (
-    data['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
-# replace % to float value
-data['Obesity levels(Country)'] = 0.01 * (data['Obesity levels(Country)'].str.replace('%', '')).astype(float)
 
-st.set_page_config(page_title='Tomi', initial_sidebar_state='expanded', layout="wide", page_icon="running")
-st.dataframe(data)
 # st.write(data.columns)
 # chart_data = pd.DataFrame(
 #     data['City'],
@@ -44,21 +43,23 @@ import streamlit as st  # pip install streamlit
 # ---- READ EXCEL ----
 @st.cache
 def get_data_from_excel():
-    df = data
-    # df = pd.read_csv("healthy_lifestyle_city_2021.csv")
-    # df['Cost of a bottle of water(City)'] = 4.24 * (
-    #     df['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
-    #     float)
-    # df['Cost of a monthly gym membership(City)'] = 4.24 * (
-    #     df['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
-    # # replace % to float value
-    # df['Obesity levels(Country)'] = 0.01 * (df['Obesity levels(Country)'].str.replace('%', '')).astype(float)
-    # Add 'hour' column to dataframe
-    # df["hour"] = pd.to_datetime(df["Time"], format="%H:%M:%S").dt.hour
-    return df
+    data = pd.read_csv("healthy_lifestyle_city_2021.csv")
+    # preprocess
+
+    # replace pounds to shekels
+    data['Cost of a bottle of water(City)'] = 4.24 * (
+        data['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
+        float)
+    data['Cost of a monthly gym membership(City)'] = 4.24 * (
+        data['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
+    # replace % to float value
+    data['Obesity levels(Country)'] = 0.01 * (data['Obesity levels(Country)'].str.replace('%', '')).astype(float)
+    return data
 
 
 df = get_data_from_excel()
+st.set_page_config(page_title='Tomi', initial_sidebar_state='expanded', layout="wide", page_icon="running")
+st.dataframe(df)
 
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
