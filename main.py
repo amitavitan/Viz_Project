@@ -38,6 +38,7 @@ import streamlit as st  # pip install streamlit
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 # st.set_page_config(page_title="Sales Dashboard", page_icon=":bar_chart:", layout="wide")
+st.set_page_config(page_title='Tomi', initial_sidebar_state='expanded', layout="wide", page_icon="running")
 
 
 # ---- READ EXCEL ----
@@ -58,7 +59,6 @@ def get_data_from_excel():
 
 
 df = get_data_from_excel()
-st.set_page_config(page_title='Tomi', initial_sidebar_state='expanded', layout="wide", page_icon="running")
 st.dataframe(df)
 
 # ---- SIDEBAR ----
