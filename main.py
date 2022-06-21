@@ -1,37 +1,3 @@
-import pandas as pd
-import streamlit as st
-
-# data = pd.read_csv("healthy_lifestyle_city_2021.csv")
-# # preprocess
-#
-# # replace pounds to shekels
-# data['Cost of a bottle of water(City)'] = 4.24 * (data['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
-#     float)
-# data['Cost of a monthly gym membership(City)'] = 4.24 * (
-#     data['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
-# # replace % to float value
-# data['Obesity levels(Country)'] = 0.01 * (data['Obesity levels(Country)'].str.replace('%', '')).astype(float)
-
-
-# st.write(data.columns)
-# chart_data = pd.DataFrame(
-#     data['City'],
-#     columns=["a", "b", "c"])
-# # st.bar_chart(data[['City', 'Sunshine hours(City)']])
-# selected_ciry = st.radio('Pick one', list(data['City']), horizontal=True)
-# if selected_ciry == 'Tel Aviv':
-#     st.write('You selected Tel Aviv.')
-#     st.bar_chart(data['Sunshine hours(City)'])
-# else:
-#     st.write("You didn't select comedy.")
-
-# st.bar_chart(chart_data)
-# @Email:  contact@pythonandvba.com
-# @Website:  https://pythonandvba.com
-# @YouTube:  https://youtube.com/c/CodingIsFun
-# @Project:  Sales Dashboard w/ Streamlit
-
-
 import pandas as pd  # pip install pandas openpyxl
 import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
@@ -55,6 +21,16 @@ def get_data_from_excel():
         data['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
     # replace % to float value
     data['Obesity levels(Country)'] = 0.01 * (data['Obesity levels(Country)'].str.replace('%', '')).astype(float)
+    data = data.fillna(0)
+    for col in data.columns:
+        if col == "City":
+            continue
+        else:
+            try:
+                data[col] = data[col].astype(float)
+            except:
+                data[col] = data[col].str.replace('-', '0').astype(float)
+                pass
     return data
 
 
@@ -88,13 +64,12 @@ df_selection = df.query(
 # ---- MAINPAGE ----
 st.title(":bar_chart: Sales Dashboard")
 st.markdown("##")
-print("0")
 # TOP KPI's
 avg_sunshine = round(df["Sunshine hours(City)"].mean(), 3)
 average_hours_worked = round(df["Annual avg. hours worked"].mean(), 1)
 star_rating = ":star:" * int(round(average_hours_worked, 0))
 average_bottle_cost = round(df["Cost of a bottle of water(City)"].mean(), 2)
-print("1")
+
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
     st.subheader("AVG Sunshine:")
