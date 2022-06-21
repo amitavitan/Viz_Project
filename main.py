@@ -44,14 +44,15 @@ import streamlit as st  # pip install streamlit
 # ---- READ EXCEL ----
 @st.cache
 def get_data_from_excel():
-    df = pd.read_csv("healthy_lifestyle_city_2021.csv")
-    df['Cost of a bottle of water(City)'] = 4.24 * (
-        df['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
-        float)
-    df['Cost of a monthly gym membership(City)'] = 4.24 * (
-        df['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
-    # replace % to float value
-    df['Obesity levels(Country)'] = 0.01 * (df['Obesity levels(Country)'].str.replace('%', '')).astype(float)
+    df = data
+    # df = pd.read_csv("healthy_lifestyle_city_2021.csv")
+    # df['Cost of a bottle of water(City)'] = 4.24 * (
+    #     df['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
+    #     float)
+    # df['Cost of a monthly gym membership(City)'] = 4.24 * (
+    #     df['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
+    # # replace % to float value
+    # df['Obesity levels(Country)'] = 0.01 * (df['Obesity levels(Country)'].str.replace('%', '')).astype(float)
     # Add 'hour' column to dataframe
     # df["hour"] = pd.to_datetime(df["Time"], format="%H:%M:%S").dt.hour
     return df
@@ -86,13 +87,13 @@ df_selection = df.query(
 # ---- MAINPAGE ----
 st.title(":bar_chart: Sales Dashboard")
 st.markdown("##")
-
+print("0")
 # TOP KPI's
 avg_sunshine = round(df["Sunshine hours(City)"].mean(), 3)
 average_hours_worked = round(df["Annual avg. hours worked"].mean(), 1)
 star_rating = ":star:" * int(round(average_hours_worked, 0))
 average_bottle_cost = round(df["Cost of a bottle of water(City)"].mean(), 2)
-
+print("1")
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
     st.subheader("AVG Sunshine:")
@@ -103,7 +104,7 @@ with middle_column:
 with right_column:
     st.subheader("Average Sales Per Transaction:")
     st.subheader(f"IL ₪ {average_bottle_cost}")
-
+print("2")
 st.markdown("""---""")
 
 # SALES BY PRODUCT LINE [BAR CHART]
