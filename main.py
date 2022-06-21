@@ -44,7 +44,7 @@ import streamlit as st  # pip install streamlit
 # ---- READ EXCEL ----
 @st.cache
 def get_data_from_excel():
-    df = pd.read_csv(io="healthy_lifestyle_city_2021.csv")
+    df = pd.read_csv("healthy_lifestyle_city_2021.csv")
     df['Cost of a bottle of water(City)'] = 4.24 * (
         df['Cost of a bottle of water(City)'].str.replace('£', '')).astype(
         float)
