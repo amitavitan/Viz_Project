@@ -4,7 +4,7 @@ import streamlit as st  # pip install streamlit
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 # st.set_page_config(page_title="Sales Dashboard", page_icon=":bar_chart:", layout="wide")
-st.set_page_config(page_title='Tomi', initial_sidebar_state='expanded', layout="wide", page_icon="running")
+st.set_page_config(page_title='healthy_lifestyle', initial_sidebar_state='expanded', layout="wide", page_icon="running")
 
 
 # ---- READ EXCEL ----
@@ -62,7 +62,7 @@ df_selection = df.query(
 )
 
 # ---- MAINPAGE ----
-st.title(":bar_chart: Sales Dashboard")
+st.title(":bar_chart: Healthy Lifestyle Dashboard")
 st.markdown("##")
 # TOP KPI's
 avg_sunshine = round(df_selection["Sunshine hours(City)"].mean(), 3)
@@ -80,7 +80,6 @@ with middle_column:
 with right_column:
     st.subheader("Average Bottle Cost:")
     st.subheader(f"IL ₪ {average_bottle_cost}")
-print("2")
 st.markdown("""---""")
 
 # SALES BY PRODUCT LINE [BAR CHART]
