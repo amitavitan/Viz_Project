@@ -87,11 +87,12 @@ st.markdown("""---""")
 # sales_by_product_line = (
 #     df.groupby(by=["Life expectancy(years) (Country)"]).sum()[["Happiness levels(Country)"]].sort_values(by="Happiness levels(Country)")
 # )
+
 fig_product_sales = px.bar(
     df_selection,
     x="City",
-    y="Happiness levels(Country)",
-    orientation="h",
+    y="Cost of a bottle of water(City)",
+    # orientation="h",
     title="<b>Sales by Product Line</b>",
     color_discrete_sequence=["#0083B8"] * len(df_selection),
     template="plotly_white",
@@ -100,6 +101,7 @@ fig_product_sales.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
     xaxis=(dict(showgrid=False))
 )
+# print(fig_product_sales)
 
 # SALES BY HOUR [BAR CHART]
 # sales_by_hour = df_selection.groupby(by=["hour"]).sum()[["Total"]]
