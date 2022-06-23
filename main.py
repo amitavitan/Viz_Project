@@ -2,6 +2,10 @@ import pandas as pd  # pip install pandas openpyxl
 import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
 from plotly.graph_objs import *
+import plotly.graph_objects as go
+import numpy as np
+import plotly.figure_factory as ff
+
 
 # Emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 # st.set_page_config(page_title="Sales Dashboard", page_icon=":bar_chart:", layout="wide")
@@ -94,52 +98,34 @@ fig_product_sales.update_layout(
     xaxis=(dict(showgrid=False))
 )
 
-trace1 = {
-  "type": "heatmap",
-  "x": columns,
-  "y": columns,
-  "z": [
-    [1.0, 0.0421226815469731, 0.031178169969044295, 0.05900702384323323, -0.409533145874167, -0.33940695612164506, 0.18670181427887142], [0.0421226815469731, 1.0, 0.11684678549417286, 0.15936121140219361, 0.16831144977024404, 0.14158363352461317, -0.03066753253934124], [0.031178169969044295, 0.11684678549417286, 1.0, 0.5936883225858387, 0.3371292154829527, 0.24951161775091865, -0.01849904265944017], [0.05900702384323323, 0.15936121140219361, 0.5936883225858387, 1.0, 0.37813903095566864, 0.2781009904663162, -0.0956039084488694], [-0.409533145874167, 0.16831144977024404, 0.3371292154829527, 0.37813903095566864, 1.0, 0.7172266582920588, -0.290106449655687], [-0.33940695612164506, 0.14158363352461317, 0.24951161775091865, 0.2781009904663162, 0.7172266582920588, 1.0, -0.28262591579580115], [0.18670181427887142, -0.03066753253934124, -0.01849904265944017, -0.0956039084488694, -0.290106449655687, -0.28262591579580115, 1.]
-]}
-data = [trace1]
-layout = {"title": "Features Correlation Matrix"}
-fig_corr_matrix = Figure(data=data, layout=layout)
-
-
-
-import pandas as pd
-import plotly.graph_objects as go
-import numpy as np
-import plotly.figure_factory as ff
-
-df_corr = df_selection.corr() # Generate correlation matrix
-
-fig = go.Figure()
-fig.add_trace(
+# correlation matrix plot
+df_corr = df_selection.corr()  # Generate correlation matrix
+fig_corr_matrix = go.Figure()
+fig_corr_matrix.add_trace(
     go.Heatmap(
-        x = df_corr.columns,
-        y = df_corr.index,
-        z = np.array(df_corr)
+        x=df_corr.columns,
+        y=df_corr.index,
+        z=np.array(df_corr)
     )
 )
 x = list(df_corr.columns)
 y = list(df_corr.index)
 z = np.array(df_corr)
-
-fig = ff.create_annotated_heatmap(
+fig_corr_matrix = ff.create_annotated_heatmap(
     z,
-    x = x,
-    y = y ,
-    annotation_text = np.around(z, decimals=2),
+    x=x,
+    y=y ,
+    annotation_text=np.around(z, decimals=2),
     hoverinfo='z',
-    colorscale='Viridis'
+    colorscale='Viridis',
+    showscale=True
     )
 
 
 mid = st.columns(2)
 # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
 mid[0].plotly_chart(fig_product_sales, use_container_width=True)
-mid[1].plotly_chart(fig, use_container_width=True)
+mid[1].plotly_chart(fig_corr_matrix, use_container_width=True)
 
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
