@@ -127,7 +127,7 @@ mid[0].plotly_chart(fig_product_sales, use_container_width=True)
 col_chart = st.selectbox(
     "Select Column:",
     options=columns,
-    default=columns,
+    index=0,
 )
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
