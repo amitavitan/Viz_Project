@@ -68,23 +68,7 @@ df_selection = df.query("City == @city")
 # ---- MAINPAGE ----
 st.title(":bar_chart: Healthy Lifestyle Dashboard")
 st.markdown("##")
-# TOP KPI's
-# avg_sunshine = round(df_selection["Sunshine hours(City)"].mean(), 3)
-# average_hours_worked = round((1/365)*df_selection["Annual avg. hours worked"].mean(), 1)
-# # star_rating = "☀️" * int(round(average_hours_worked, 0))
-# average_bottle_cost = round(df_selection["Cost of a bottle of water(City)"].mean(), 2)
 
-# left_column, middle_column, right_column = st.columns(3)
-# with left_column:
-#     st.subheader("AVG Sunshine:")
-#     st.subheader(f"{avg_sunshine:,}")
-# with middle_column:
-#     st.subheader("Average Hours Worked Per Day:")
-#     st.subheader(f"{average_hours_worked}")
-# with right_column:
-#     st.subheader("Average Bottle Cost:")
-#     st.subheader(f"IL ₪ {average_bottle_cost}")
-# st.markdown("""---""")
 print(st.columns(3))
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
@@ -137,10 +121,14 @@ fig_product_sales.update_layout(
 #     yaxis=(dict(showgrid=False)),
 # )
 
-left_column, right_column = st.columns(2)
+mid = st.columns(1)
 # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
-right_column.plotly_chart(fig_product_sales, use_container_width=True)
-
+mid.plotly_chart(fig_product_sales, use_container_width=True)
+col_chart = st.columns.multiselect(
+    "Select Column:",
+    options=columns,
+    default=columns,
+)
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
             <style>
