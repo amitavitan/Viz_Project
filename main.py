@@ -133,7 +133,6 @@ hide_st_style = """
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
-            body {background-image: Blue; background-size: cover;}
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
