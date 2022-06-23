@@ -134,7 +134,7 @@ hide_st_style = """
             footer {visibility: hidden;}
             header {visibility: hidden;}
             body {
-            background-image: url("https://stock.adobe.com/il/images/healthy-lifestyle-workout-fitness-gym-diat-und-gesundheit/120034416");
+            background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
             background-size: cover;
             }
             </style>
