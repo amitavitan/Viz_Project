@@ -104,13 +104,12 @@ trace1 = {
 ]}
 data = [trace1]
 layout = {"title": "Features Correlation Matrix"}
-fig = Figure(data=data, layout=layout)
-# plot_url = py.plot(fig)
+fig_corr_matrix = Figure(data=data, layout=layout)
 
 mid = st.columns(2)
 # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
 mid[0].plotly_chart(fig_product_sales, use_container_width=True)
-mid[1].plotly_chart(fig, use_container_width=True)
+mid[1].plotly_chart(fig_corr_matrix, use_container_width=True)
 
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
