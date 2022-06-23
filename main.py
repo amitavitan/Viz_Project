@@ -94,6 +94,13 @@ for i, place in enumerate(st.columns(int(len(columns)/2))):
         st.subheader(f"{avg:,}")
 st.markdown("""---""")
 
+for i, place in enumerate(st.columns(int(len(columns)/2))):
+    with place:
+        st.subheader(columns[i+5])
+        avg = round(df_selection[df_selection[columns[i+5]] != 0][columns[i+5]].mean(), 2)
+        st.subheader(f"{avg:,}")
+st.markdown("""---""")
+
 # SALES BY PRODUCT LINE [BAR CHART]
 # sales_by_product_line = (
 #     df.groupby(by=["Life expectancy(years) (Country)"]).sum()[["Happiness levels(Country)"]].sort_values(by="Happiness levels(Country)")
