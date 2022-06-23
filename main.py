@@ -134,7 +134,7 @@ hide_st_style = """
             footer {visibility: hidden;}
             header {visibility: hidden;}
             body {
-            background-image: url("https://img.freepik.com/free-photo/healthy-lifestyle-food-sport-concept-white-wood_53476-3985.jpg?w=1380");
+            background-image: url("https://stock.adobe.com/il/images/healthy-lifestyle-workout-fitness-gym-diat-und-gesundheit/120034416");
             background-size: cover;
             }
             </style>
