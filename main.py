@@ -105,10 +105,41 @@ data = [trace1]
 layout = {"title": "Features Correlation Matrix"}
 fig_corr_matrix = Figure(data=data, layout=layout)
 
+
+
+import pandas as pd
+import plotly.graph_objects as go
+import numpy as np
+import plotly.figure_factory as ff
+
+df_corr = df_selection.corr() # Generate correlation matrix
+
+fig = go.Figure()
+fig.add_trace(
+    go.Heatmap(
+        x = df_corr.columns,
+        y = df_corr.index,
+        z = np.array(df_corr)
+    )
+)
+x = list(df_corr.columns)
+y = list(df_corr.index)
+z = np.array(df_corr)
+
+fig = ff.create_annotated_heatmap(
+    z,
+    x = x,
+    y = y ,
+    annotation_text = np.around(z, decimals=2),
+    hoverinfo='z',
+    colorscale='Viridis'
+    )
+
+
 mid = st.columns(2)
 # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
 mid[0].plotly_chart(fig_product_sales, use_container_width=True)
-mid[1].plotly_chart(fig_corr_matrix, use_container_width=True)
+mid[1].plotly_chart(fig, use_container_width=True)
 
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
