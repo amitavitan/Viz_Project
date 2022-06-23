@@ -50,26 +50,12 @@ city = st.sidebar.multiselect(
     options=df["City"].unique(),
     default=df["City"].unique()
 )
-#
-# col_chart = st.sidebar.multiselect(
-#     "Select the Customer Type:",
-#     options=df.columns,
-#     default=df.columns,
-# )
-#
-# gender = st.sidebar.multiselect(
-#     "Select the Gender:",
-#     options=df["Gender"].unique(),
-#     default=df["Gender"].unique()
-# )
 
 df_selection = df.query("City == @city")
 
 # ---- MAINPAGE ----
 st.title(":bar_chart: Healthy Lifestyle Dashboard")
 st.markdown("##")
-
-print(st.columns(3))
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
@@ -85,15 +71,16 @@ for i, place in enumerate(st.columns(int(len(columns)/2))):
         st.subheader(f"{avg:,}")
 st.markdown("""---""")
 
-# SALES BY PRODUCT LINE [BAR CHART]
-# sales_by_product_line = (
-#     df.groupby(by=["Life expectancy(years) (Country)"]).sum()[["Happiness levels(Country)"]].sort_values(by="Happiness levels(Country)")
-# )
-
+col_chart = st.selectbox(
+    "Select Column For Graphs:",
+    options=columns,
+    index=0,
+)
+print(col_chart)
 fig_product_sales = px.bar(
     df_selection,
     x="City",
-    y="Cost of a bottle of water(City)",
+    y=col_chart,
     # orientation="h",
     title="<b>Sales by Product Line</b>",
     color_discrete_sequence=["#0083B8"] * len(df_selection),
@@ -103,32 +90,11 @@ fig_product_sales.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
     xaxis=(dict(showgrid=False))
 )
-# print(fig_product_sales)
-
-# SALES BY HOUR [BAR CHART]
-# sales_by_hour = df_selection.groupby(by=["hour"]).sum()[["Total"]]
-# fig_hourly_sales = px.bar(
-#     sales_by_hour,
-#     x=sales_by_hour.index,
-#     y="Total",
-#     title="<b>Sales by hour</b>",
-#     color_discrete_sequence=["#0083B8"] * len(sales_by_hour),
-#     template="plotly_white",
-# )
-# fig_hourly_sales.update_layout(
-#     xaxis=dict(tickmode="linear"),
-#     plot_bgcolor="rgba(0,0,0,0)",
-#     yaxis=(dict(showgrid=False)),
-# )
 
 mid = st.columns(2)
 # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
 mid[0].plotly_chart(fig_product_sales, use_container_width=True)
-col_chart = st.selectbox(
-    "Select Column:",
-    options=columns,
-    index=0,
-)
+
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
             <style>
