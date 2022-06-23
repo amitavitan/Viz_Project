@@ -87,7 +87,7 @@ st.markdown("##")
 # st.markdown("""---""")
 print(st.columns(3))
 for place in range(len(st.columns(len(columns)))):
-    with place:
+    with st.columns(len(columns))[place]:
         st.subheader(columns[place])
         # avg = round(df_selection[columns[place]].mean(), 3)
         avg = round(df_selection[df_selection[columns[place]] != 0]["Sunshine hours(City)"].mean(), 3)
