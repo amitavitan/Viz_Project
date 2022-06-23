@@ -82,7 +82,7 @@ fig_product_sales = px.bar(
     x="City",
     y=col_chart,
     # orientation="h",
-    title=f"<b>{col_chart}</b>",
+    title=f"<b>{col_chart} Per City</b>",
     color_discrete_sequence=["#0083B8"] * len(df_selection),
     template="plotly_white",
 )
