@@ -87,7 +87,7 @@ st.markdown("##")
 # st.markdown("""---""")
 print(st.columns(3))
 
-for i, place in enumerate(st.columns(len(columns))):
+for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
         st.subheader(columns[i])
         avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 2)
