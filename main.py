@@ -124,7 +124,7 @@ fig_product_sales.update_layout(
 mid = st.columns(2)
 # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
 mid[0].plotly_chart(fig_product_sales, use_container_width=True)
-col_chart = st.multiselect(
+col_chart = st.selectbox(
     "Select Column:",
     options=columns,
     default=columns,
