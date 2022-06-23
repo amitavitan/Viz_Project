@@ -134,7 +134,7 @@ hide_st_style = """
             footer {visibility: hidden;}
             header {visibility: hidden;}
             body {
-            background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
+            background-image: Blue;
             background-size: cover;
             }
             </style>
