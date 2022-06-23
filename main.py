@@ -90,9 +90,9 @@ print(st.columns(3))
 for i, place in enumerate(st.columns(len(columns))):
     with place:
         st.subheader(columns[i])
-        # avg = round(df_selection[columns[place]].mean(), 3)
-        avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 3)
+        avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 2)
         st.subheader(f"{avg:,}")
+st.markdown("""---""")
 
 # SALES BY PRODUCT LINE [BAR CHART]
 # sales_by_product_line = (
