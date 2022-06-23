@@ -121,10 +121,10 @@ fig_product_sales.update_layout(
 #     yaxis=(dict(showgrid=False)),
 # )
 
-mid = st.columns(1)
+mid = st.columns(2)
 # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
-mid.plotly_chart(fig_product_sales, use_container_width=True)
-col_chart = st.columns.multiselect(
+mid[0].plotly_chart(fig_product_sales, use_container_width=True)
+col_chart = st.multiselect(
     "Select Column:",
     options=columns,
     default=columns,
