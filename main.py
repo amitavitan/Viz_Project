@@ -69,10 +69,10 @@ df_selection = df.query("City == @city")
 st.title(":bar_chart: Healthy Lifestyle Dashboard")
 st.markdown("##")
 # TOP KPI's
-avg_sunshine = round(df_selection["Sunshine hours(City)"].mean(), 3)
-average_hours_worked = round((1/365)*df_selection["Annual avg. hours worked"].mean(), 1)
-# star_rating = "☀️" * int(round(average_hours_worked, 0))
-average_bottle_cost = round(df_selection["Cost of a bottle of water(City)"].mean(), 2)
+# avg_sunshine = round(df_selection["Sunshine hours(City)"].mean(), 3)
+# average_hours_worked = round((1/365)*df_selection["Annual avg. hours worked"].mean(), 1)
+# # star_rating = "☀️" * int(round(average_hours_worked, 0))
+# average_bottle_cost = round(df_selection["Cost of a bottle of water(City)"].mean(), 2)
 
 # left_column, middle_column, right_column = st.columns(3)
 # with left_column:
@@ -85,11 +85,13 @@ average_bottle_cost = round(df_selection["Cost of a bottle of water(City)"].mean
 #     st.subheader("Average Bottle Cost:")
 #     st.subheader(f"IL ₪ {average_bottle_cost}")
 # st.markdown("""---""")
-
-for place in st.columns(3):
+print(st.columns(3))
+for place in range(len(st.columns(len(columns)))):
     with place:
-        st.subheader("AVG Sunshine:")
-        st.subheader(f"{avg_sunshine:,}")
+        st.subheader(columns[place])
+        # avg = round(df_selection[columns[place]].mean(), 3)
+        avg = round(df_selection[df_selection[columns[place]] != 0]["Sunshine hours(City)"].mean(), 3)
+        st.subheader(f"{avg:,}")
 
 # SALES BY PRODUCT LINE [BAR CHART]
 # sales_by_product_line = (
