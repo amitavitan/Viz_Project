@@ -21,7 +21,7 @@ def get_data_from_excel():
         data['Cost of a monthly gym membership(City)'].str.replace('£', '')).astype(float)
     # replace % to float value
     data['Obesity levels(Country)'] = 0.01 * (data['Obesity levels(Country)'].str.replace('%', '')).astype(float)
-    data = data.fillna(0)
+    data = data.fillna(0)  # only != 0
     for col in data.columns:
         if col == "City":
             continue
@@ -31,10 +31,16 @@ def get_data_from_excel():
             except:
                 data[col] = data[col].str.replace('-', '0').astype(float)
                 pass
+
+
     return data
 
 
 df = get_data_from_excel()
+columns = list(df.columns)
+columns.remove("City")
+columns.remove("Rank")
+
 st.dataframe(df)
 
 # ---- SIDEBAR ----
@@ -57,9 +63,7 @@ city = st.sidebar.multiselect(
 #     default=df["Gender"].unique()
 # )
 
-df_selection = df.query(
-    "City == @city"
-)
+df_selection = df.query("City == @city")
 
 # ---- MAINPAGE ----
 st.title(":bar_chart: Healthy Lifestyle Dashboard")
@@ -67,20 +71,25 @@ st.markdown("##")
 # TOP KPI's
 avg_sunshine = round(df_selection["Sunshine hours(City)"].mean(), 3)
 average_hours_worked = round((1/365)*df_selection["Annual avg. hours worked"].mean(), 1)
-star_rating = "☀️" * int(round(average_hours_worked, 0))
+# star_rating = "☀️" * int(round(average_hours_worked, 0))
 average_bottle_cost = round(df_selection["Cost of a bottle of water(City)"].mean(), 2)
 
-left_column, middle_column, right_column = st.columns(3)
-with left_column:
-    st.subheader("AVG Sunshine:")
-    st.subheader(f"{avg_sunshine:,}")
-with middle_column:
-    st.subheader("Average Hours Worked Per Day:")
-    st.subheader(f"{average_hours_worked} {star_rating}")
-with right_column:
-    st.subheader("Average Bottle Cost:")
-    st.subheader(f"IL ₪ {average_bottle_cost}")
-st.markdown("""---""")
+# left_column, middle_column, right_column = st.columns(3)
+# with left_column:
+#     st.subheader("AVG Sunshine:")
+#     st.subheader(f"{avg_sunshine:,}")
+# with middle_column:
+#     st.subheader("Average Hours Worked Per Day:")
+#     st.subheader(f"{average_hours_worked}")
+# with right_column:
+#     st.subheader("Average Bottle Cost:")
+#     st.subheader(f"IL ₪ {average_bottle_cost}")
+# st.markdown("""---""")
+
+for place in st.columns(3):
+    with place:
+        st.subheader("AVG Sunshine:")
+        st.subheader(f"{avg_sunshine:,}")
 
 # SALES BY PRODUCT LINE [BAR CHART]
 # sales_by_product_line = (
