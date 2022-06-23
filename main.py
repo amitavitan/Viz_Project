@@ -117,7 +117,7 @@ fig_corr_matrix = ff.create_annotated_heatmap(
     y=y ,
     annotation_text=np.around(z, decimals=2),
     hoverinfo='z',
-    colorscale='Sunsetdark',
+    colorscale='RdPu',
     showscale=True
     )
 
