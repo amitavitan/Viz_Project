@@ -157,8 +157,8 @@ with row7_1:
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix['layout'].update(
         title="Annotated Heatmap",
-        xaxis=go.XAxis(ticks='', side='top'),
-        yaxis=go.YAxis(ticks='', side='left', ticksuffix='  '),  # ticksuffix is a workaround to add a bit of padding
+        xaxis=go.XAxis(ticks='', side='top', ticksuffix='  '),
+        yaxis=go.YAxis(ticks='', side='right', ticksuffix='  '),  # ticksuffix is a workaround to add a bit of padding
         width=700,
         height=700,
         autosize=False
