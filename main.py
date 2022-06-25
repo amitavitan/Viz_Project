@@ -186,6 +186,7 @@ with row9_1:
             showscale=True,
             colorscale="RdPu",
             colorbar=dict(title=title2),
+            line=dict(width=2, color='DarkSlateGrey')
         )
     )])
     fig_bubble.update_layout(
