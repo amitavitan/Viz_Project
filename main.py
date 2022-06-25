@@ -118,16 +118,16 @@ df_selection = df.loc[df['City'].isin(selected_cities)]
 st.subheader('Statistics - Columns Averages')
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
-        st.markdown(columns[i])
+        st.subheader(columns[i])
         avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 2)
-        st.subheader(f"{avg:,}")
+        st.markdown(f"{avg:,}")
 st.markdown("""---""")
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
         st.subheader(columns[i+5])
         avg = round(df_selection[df_selection[columns[i+5]] != 0][columns[i+5]].mean(), 2)
-        st.subheader(f"{avg:,}")
+        st.markdown(f"{avg:,}")
 st.markdown("""---""")
 
 col_chart = st.selectbox(
