@@ -109,7 +109,7 @@ st.text('')
 #     options=df["City"].unique(),
 #     default=df["City"].unique()
 # )
-container = st.beta_container()
+container = st.container()
 all = st.checkbox("Select all")
 if all:
     selected_cities = st.sidebar.multiselect("Select the Cities:", df["City"].unique(), df["City"].unique())
