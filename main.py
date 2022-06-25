@@ -79,29 +79,6 @@ with row3_1:
 ####################
 ### SELECTION ###
 ####################
-# row2_spacer1, row2_1, row2_spacer2, row2_2, row2_spacer3, row2_3, row2_spacer4, row2_4, row2_spacer5 = st.columns((.2, 1.6, .2, 1.6, .2, 1.6, .2, 1.6, .2))
-# with row2_1:
-#     unique_games_in_df = df_data_filtered.game_id.nunique()
-#     str_games = "🏟️ " + str(unique_games_in_df) + " Matches"
-#     st.markdown(str_games)
-# with row2_2:
-#     unique_teams_in_df = len(np.unique(df_data_filtered.team).tolist())
-#     t = " Teams"
-#     if(unique_teams_in_df==1):
-#         t = " Team"
-#     str_teams = "🏃‍♂️ " + str(unique_teams_in_df) + t
-#     st.markdown(str_teams)
-# with row2_3:
-#     total_goals_in_df = df_data_filtered['goals'].sum()
-#     str_goals = "🥅 " + str(total_goals_in_df) + " Goals"
-#     st.markdown(str_goals)
-# with row2_4:
-#     total_shots_in_df = df_data_filtered['shots_on_goal'].sum()
-#     str_shots = "👟⚽ " + str(total_shots_in_df) + " Shots"
-#     st.markdown(str_shots)
-#
-# row3_spacer1, row3_1, row3_spacer2 = st.columns((.2, 7.1, .2))
-# with row3_1:
 
 # ---- RAW DATA ----
 st.markdown("")
@@ -178,7 +155,7 @@ with row7_1:
     y = list(df_corr.index)
     z = np.array(df_corr)
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
-    st.plotly_chart(fig_corr_matrix, use_container_width=True)
+    st.plotly_chart(fig_corr_matrix, use_container_width=False)
 with row7_2:
     st.subheader('Correlation Of Attributes')
 
