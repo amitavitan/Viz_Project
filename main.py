@@ -154,14 +154,8 @@ with row7_1:
     x = list(df_corr.columns)
     y = list(df_corr.index)
     z = np.array(df_corr)
-    fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu')
-    fig_corr_matrix['layout'].update(
-        xaxis=go.XAxis(ticks='', side='top', ticksuffix='  '),
-        yaxis=go.YAxis(ticks='', side='right', ticksuffix='  '),
-        width=700,
-        height=700,
-        autosize=False
-    )
+    fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
+    fig_corr_matrix['layout'].update(width=700, height=700)
     st.plotly_chart(fig_corr_matrix, use_container_width=False)
 with row7_2:
     st.subheader('Correlation Of Attributes')
