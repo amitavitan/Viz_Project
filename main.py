@@ -140,6 +140,10 @@ with row5_2:
         plot_bgcolor="rgba(0,0,0,0)",
         xaxis=(dict(showgrid=False))
     )
+    avg = round(df_selection[df_selection[plot_x_per_city_selected] != 0][plot_x_per_city_selected].mean(), 2)
+
+    fig_product_sales.add_trace(go.Scatter(y=avg, name='High 2014',
+                             line=dict(color='firebrick', width=4)))
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
 st.markdown("""---""")
