@@ -151,10 +151,11 @@ with row5_2:
         color_discrete_sequence=["#0083B8"] * len(df_selection),
         template="plotly_white",
     )
-    # fig_product_sales.update_layout(
-    #     plot_bgcolor="rgba(0,0,0,0)",
-    #     xaxis=(dict(showgrid=False))
-    # )
+    fig_product_sales.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        xaxis=(dict(showgrid=False))
+    )
+    st.plotly_chart(fig_product_sales, use_container_width=True)
 
 
 
