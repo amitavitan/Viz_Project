@@ -146,7 +146,7 @@ with row5_2:
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
 with row6_1:
     st.subheader('Correlation Of Attributes')
-row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
+row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 4.4, .4, 3.5, .2))
 with row7_1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
@@ -172,13 +172,7 @@ with row8_1:
 
     title1 = re.sub("[\(\[].*?[\)\]]", "", selected_col1)
     title2 = re.sub("[\(\[].*?[\)\]]", "", selected_col2)
-# with row8_2:
-
-
-
-
-row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
-with row9_1:
+with row8_2:
     fig_bubble = go.Figure(data=[go.Scatter(
         x=x1['Continent'],
         y=x1['mean'],
@@ -204,6 +198,12 @@ with row9_1:
         # )
     )
     st.plotly_chart(fig_bubble, use_container_width=False)
+
+
+
+# row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
+# with row9_1:
+
 # with row9_2:
 #     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
 #         plot_x_per_matchday(plot_x_per_matchday_selected, plot_x_per_matchday_type)
