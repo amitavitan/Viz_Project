@@ -187,11 +187,11 @@ with row9_1:
         xaxis_title="Continent",
         yaxis_title="col1",
         legend_title="Legend Title",
-        font=dict(
-            family="Caliberi",
-            size=18,
-            color="RebeccaPurple"
-        )
+        # font=dict(
+        #     family="Caliberi",
+        #     size=18,
+        #     color="RebeccaPurple"
+        # )
     )
     st.plotly_chart(fig_bubble, use_container_width=False)
 # with row9_2:
