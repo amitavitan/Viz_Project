@@ -130,6 +130,27 @@ for i, place in enumerate(st.columns(int(len(columns)/2))):
         st.markdown(f"{avg:,}")
 st.markdown("""---""")
 
+
+################
+### ANALYSIS ###
+################
+measure_types = ["Mean", "Absolute", "Median", "Maximum", "Minimum"]
+row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
+with row4_1:
+    st.subheader('Analysis per City')
+row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
+with row5_1:
+    st.markdown('Investigate a variety of stats for each city. Which team scores the most goals per game? How does your team compare in terms of distance ran per game?')
+    plot_x_per_city_selected = st.selectbox ("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
+    plot_x_per_city_type = st.selectbox("Which measure do you want to analyze?", measure_types, key='measure_team')
+with row5_2:
+    if all_cities_selected != 'Select teams manually (choose below)' or selected_teams:
+        plot_x_per_team(plot_x_per_city_selected, plot_x_per_city_type)
+    else:
+        st.warning('Please select at least one city')
+
+
+
 col_chart = st.selectbox(
     "Select Column For Graphs:",
     options=columns,
