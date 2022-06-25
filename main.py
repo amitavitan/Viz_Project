@@ -160,20 +160,45 @@ with row7_1:
 with row7_2:
     st.subheader('Correlation Of Attributes')
 
+x1 = df_selection[df_selection['Outdoor activities(City)'] != 0].groupby('Continent')['Outdoor activities(City)'].agg(['mean']).reset_index("Continent")
+x2 = df_selection[df_selection['Sunshine hours(City)'] != 0].groupby('Continent')['Sunshine hours(City)'].agg(['mean']).reset_index("Continent")
+
+
 '''HERE'''
 row8_spacer1, row8_1, row8_spacer2 = st.columns((.2, 7.1, .2))
 with row8_1:
     st.subheader('Analysis per Matchday')
 row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row9_1:
-    st.markdown('Investigate stats over the course of a season. At what point in the season do teams score the most goals? Do teams run less towards the end of the season?')
-    plot_x_per_matchday_selected = st.selectbox ("Which aspect do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_matchday')
-    plot_x_per_matchday_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_matchday')
-with row9_2:
-    if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
-        plot_x_per_matchday(plot_x_per_matchday_selected, plot_x_per_matchday_type)
-    else:
-        st.warning('Please select at least one team')
+    fig_bubble = go.Figure(data=[go.Scatter(
+        x=x1['Continent'],
+        y=x1['mean'],
+        mode='markers',
+        marker=dict(
+            color=x2['mean'],
+            size=40,
+            showscale=True,
+            colorscale="RdPu",
+            colorbar=dict(title="col2"),
+        )
+    )])
+    fig_bubble.update_layout(
+        title="Continent Per col1 per col2",
+        xaxis_title="Continent",
+        yaxis_title="col1",
+        legend_title="Legend Title",
+        font=dict(
+            family="Caliberi",
+            size=18,
+            color="RebeccaPurple"
+        )
+    )
+    st.plotly_chart(fig_bubble, use_container_width=False)
+# with row9_2:
+#     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
+#         plot_x_per_matchday(plot_x_per_matchday_selected, plot_x_per_matchday_type)
+#     else:
+#         st.warning('Please select at least one team')
 
 
 ############# correlation matrix plot
