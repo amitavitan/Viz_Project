@@ -94,7 +94,11 @@ with row3_1:
 #
 # row3_spacer1, row3_1, row3_spacer2 = st.columns((.2, 7.1, .2))
 # with row3_1:
-
+st.markdown("")
+see_data = st.expander('Click here to see the raw data 👉')
+with see_data:
+    st.dataframe(data=df.reset_index(drop=True))
+st.text('')
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
 city = st.sidebar.multiselect(
@@ -118,14 +122,6 @@ for i, place in enumerate(st.columns(int(len(columns)/2))):
         avg = round(df_selection[df_selection[columns[i+5]] != 0][columns[i+5]].mean(), 2)
         st.subheader(f"{avg:,}")
 st.markdown("""---""")
-
-st.markdown("")
-see_data = st.expander('Click here to see the raw data 👉')
-with see_data:
-    st.dataframe(data=df.reset_index(drop=True))
-st.text('')
-
-
 
 col_chart = st.selectbox(
     "Select Column For Graphs:",
