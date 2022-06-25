@@ -166,28 +166,37 @@ with row5_2:
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
 
+row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
+with row6_1:
+    st.subheader('Correlation Of Attributes')
+row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 2.3, .4, 4.4, .2))
+with row7_1:
+    df_corr = df_selection.corr()  # Generate correlation matrix
+    fig_corr_matrix = go.Figure()
+    fig_corr_matrix.add_trace(
+        go.Heatmap(
+            x=df_corr.columns,
+            y=df_corr.index,
+            z=np.array(df_corr)
+        )
+    )
+    x = list(df_corr.columns)
+    y = list(df_corr.index)
+    z = np.array(df_corr)
+    fig_corr_matrix = ff.create_annotated_heatmap(
+        z,
+        x=x,
+        y=y,
+        annotation_text=np.around(z, decimals=2),
+        hoverinfo='z',
+        colorscale='RdPu',
+        showscale=True
+    )
+with row7_2:
+    st.subheader('Correlation Of Attributes')
 
-# col_chart = st.selectbox(
-#     "Select Column For Graphs:",
-#     options=columns,
-#     index=0,
-# )
-# print(col_chart)
-#
-# # bar plot
-# fig_product_sales = px.bar(
-#     df_selection,
-#     x="City",
-#     y=col_chart,
-#     # orientation="h",
-#     title=f"<b>{col_chart} Per City</b>",
-#     color_discrete_sequence=["#0083B8"] * len(df_selection),
-#     template="plotly_white",
-# )
-# fig_product_sales.update_layout(
-#     plot_bgcolor="rgba(0,0,0,0)",
-#     xaxis=(dict(showgrid=False))
-# )
+
+
 
 ############# correlation matrix plot
 # df_corr = df_selection.corr()  # Generate correlation matrix
