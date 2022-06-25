@@ -38,6 +38,13 @@ def get_data_from_excel():
                 data[col] = data[col].str.replace('-', '0').astype(float)
                 pass
 
+    data.loc[[6, 11, 12, 16, 17, 20, 23, 25, 28, 30, 31], "Continent"] = "Asia"
+    data.loc[[0, 2, 3, 4, 5, 7, 8, 15, 18, 19, 21, 27, 32, 34, 36, 37, 39, 42], "Continent"] = 'Europe'
+    data.loc[[1, 10], "Continent"] = 'Australia'
+    data.loc[[9, 14, 24, 26, 29, 33, 40, 41, 43], "Continent"] = ' North America'
+    data.loc[[13, 35], "Continent"] = 'South America'
+    data.loc[[22, 38], "Continent"] = 'Africa'
+
     return data
 
 
@@ -45,7 +52,7 @@ df = get_data_from_excel()
 columns = list(df.columns)
 columns.remove("City")
 columns.remove("Rank")
-
+columns.remove("Continent")
 
 
 
