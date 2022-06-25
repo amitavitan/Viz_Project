@@ -111,7 +111,7 @@ selected_cities = st.sidebar.multiselect(
 )
 
 # df_selection = df.query("City == @selected_cities")
-df_selection = df[df['City'] in selected_cities]
+df_selection = df.loc[df['City'].isin(selected_cities)]
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
