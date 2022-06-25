@@ -147,7 +147,7 @@ with row5_2:
         df_selection,
         x="City",
         y=plot_x_per_city_selected,
-        title=f"<b>{plot_x_per_city_selected} Per City</b>",
+        title=f"<b>{re.sub('[\(\[].*?[\)\]]', '', plot_x_per_city_selected)} Per City</b>",
         color_discrete_sequence=["pink"] * len(df_selection),
         template="plotly_white",
     )
