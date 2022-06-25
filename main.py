@@ -145,7 +145,7 @@ st.markdown("""---""")
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
 with row4_1:
     st.subheader('Analysis per City')
-row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3 = st.columns((.2, 2.3, .4, 4.4, .2))
+row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3 = st.columns((.2, 2.3, .4, 2.4, .2))
 with row5_1:
     st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
