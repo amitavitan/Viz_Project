@@ -143,7 +143,7 @@ with row5_2:
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
 
-row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 9.1, .2))
+row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
 with row6_1:
     st.subheader('Correlation Of Attributes')
 row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
@@ -155,6 +155,14 @@ with row7_1:
     y = list(df_corr.index)
     z = np.array(df_corr)
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
+    fig_corr_matrix['layout'].update(
+        title="Annotated Heatmap",
+        xaxis=go.XAxis(ticks='', side='top'),
+        yaxis=go.YAxis(ticks='', side='left', ticksuffix='  '),  # ticksuffix is a workaround to add a bit of padding
+        width=700,
+        height=700,
+        autosize=False
+    )
     st.plotly_chart(fig_corr_matrix, use_container_width=False)
 with row7_2:
     st.subheader('Correlation Of Attributes')
