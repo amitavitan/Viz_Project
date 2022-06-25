@@ -94,20 +94,24 @@ with row3_1:
 #
 # row3_spacer1, row3_1, row3_spacer2 = st.columns((.2, 7.1, .2))
 # with row3_1:
+
+# ---- RAW DATA ----
 st.markdown("")
 see_data = st.expander('Click here to see the raw data 👉')
 with see_data:
     st.dataframe(data=df.reset_index(drop=True))
 st.text('')
+
 # ---- SIDEBAR ----
 st.sidebar.header("Please Filter Here:")
-city = st.sidebar.multiselect(
-    "Select the City:",
+selected_cities = st.sidebar.multiselect(
+    "Select the Cities:",
     options=df["City"].unique(),
     default=df["City"].unique()
 )
 
-df_selection = df.query("City == @city")
+# df_selection = df.query("City == @selected_cities")
+df_selection = df[df['City'] in selected_cities]
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
