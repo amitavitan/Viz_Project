@@ -110,7 +110,7 @@ st.text('')
 #     default=df["City"].unique()
 # )
 st.sidebar.header("Please Filter Here:")
-st.sidebar.markdown("**Select the cities you want to analyze:** 👇")
+st.sidebar.markdown("**Select the cities you want to analyze**👇")
 container = st.container()
 all = st.sidebar.checkbox("Select all", value=True)
 if all:
