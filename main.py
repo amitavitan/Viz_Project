@@ -162,7 +162,7 @@ with row7_2:
 
 
 
-row8_spacer1, row8_1, row8_spacer2 = st.columns((.2, 7.1, .2))
+row8_spacer1, row8_1, row8_spacer2, row8_2, row8_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
 with row8_1:
     st.subheader('Analysis per Matchday')
     selected_col1 = st.selectbox("Select lifestyle parameter do you want to analyze?", options=columns, index=0)
@@ -172,6 +172,10 @@ with row8_1:
 
     title1 = re.sub("[\(\[].*?[\)\]]", "", selected_col1)
     title2 = re.sub("[\(\[].*?[\)\]]", "", selected_col2)
+# with row8_2:
+
+
+
 
 row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row9_1:
