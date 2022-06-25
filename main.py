@@ -109,6 +109,10 @@ selected_cities = st.sidebar.multiselect(
     options=df["City"].unique(),
     default=df["City"].unique()
 )
+all_options = st.checkbox("Select all options")
+
+if all_options:
+    selected_cities = df["City"].unique()
 
 # df_selection = df.query("City == @selected_cities")
 df_selection = df.loc[df['City'].isin(selected_cities)]
