@@ -142,8 +142,6 @@ with row5_1:
     st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
 with row5_2:
-    st.markdown(
-        'Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     fig_product_sales = px.bar(
         df_selection,
         x="City",
@@ -153,10 +151,10 @@ with row5_2:
         color_discrete_sequence=["#0083B8"] * len(df_selection),
         template="plotly_white",
     )
-    fig_product_sales.update_layout(
-        plot_bgcolor="rgba(0,0,0,0)",
-        xaxis=(dict(showgrid=False))
-    )
+    # fig_product_sales.update_layout(
+    #     plot_bgcolor="rgba(0,0,0,0)",
+    #     xaxis=(dict(showgrid=False))
+    # )
 
 
 
