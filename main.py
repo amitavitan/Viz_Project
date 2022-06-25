@@ -103,16 +103,18 @@ with see_data:
 st.text('')
 
 # ---- SIDEBAR ----
-st.sidebar.header("Please Filter Here:")
-selected_cities = st.sidebar.multiselect(
-    "Select the Cities:",
-    options=df["City"].unique(),
-    default=df["City"].unique()
-)
-all_options = st.checkbox("Select all options")
-
-if all_options:
-    selected_cities = df["City"].unique()
+# st.sidebar.header("Please Filter Here:")
+# selected_cities = st.sidebar.multiselect(
+#     "Select the Cities:",
+#     options=df["City"].unique(),
+#     default=df["City"].unique()
+# )
+container = st.beta_container()
+all = st.checkbox("Select all")
+if all:
+    selected_cities = st.sidebar.multiselect("Select the Cities:", df["City"].unique(), df["City"].unique())
+else:
+    selected_cities = st.sidebar.multiselect("Select the Cities:", df["City"].unique())
 
 # df_selection = df.query("City == @selected_cities")
 df_selection = df.loc[df['City'].isin(selected_cities)]
