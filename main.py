@@ -110,12 +110,13 @@ st.text('')
 #     default=df["City"].unique()
 # )
 st.sidebar.header("Please Filter Here:")
+st.sidebar.markdown("**Select the cities you want to analyze:** 👇")
 container = st.container()
 all = st.sidebar.checkbox("Select all", value=True)
 if all:
-    selected_cities = st.sidebar.multiselect("Select the Cities:", df["City"].unique(), df["City"].unique())
+    selected_cities = st.sidebar.multiselect("", df["City"].unique(), df["City"].unique())
 else:
-    selected_cities = st.sidebar.multiselect("Select the Cities:", df["City"].unique())
+    selected_cities = st.sidebar.multiselect("", df["City"].unique())
 
 # df_selection = df.query("City == @selected_cities")
 df_selection = df.loc[df['City'].isin(selected_cities)]
