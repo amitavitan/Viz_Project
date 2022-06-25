@@ -193,7 +193,6 @@ with row9_1:
         xaxis_title="Continent",
         yaxis_title=title1,
         legend_title="Legend Title",
-        plot_bgcolor="#d9d9d9"
         # font=dict(
         #     family="Caliberi",
         #     size=18,
