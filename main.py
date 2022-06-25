@@ -126,7 +126,7 @@ st.markdown("""---""")
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
-        st.subheader(columns[i+5])
+        st.subheader(re.sub("[\(\[].*?[\)\]]", "", columns[i+5]))
         avg = round(df_selection[df_selection[columns[i+5]] != 0][columns[i+5]].mean(), 2)
         st.markdown(f"{avg:,}")
 st.markdown("""---""")
