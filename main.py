@@ -149,12 +149,13 @@ row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3 = st.columns((.2, 2.3, 
 with row5_1:
     st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
+    title = re.sub("[\(\[].*?[\)\]]", "", plot_x_per_city_selected)
 with row5_2:
     fig_product_sales = px.bar(
         df_selection,
         x="City",
         y=plot_x_per_city_selected,
-        title=f"<b>{re.sub('[\(\[].*?[\)\]]', '', plot_x_per_city_selected)} Per City</b>",
+        title=f'<b>{title} Per City</b>',
         color_discrete_sequence=["pink"] * len(df_selection),
         template="plotly_white",
     )
