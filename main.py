@@ -156,7 +156,7 @@ with row5_2:
         x="City",
         y=plot_x_per_city_selected,
         title=f'<b>{title} Per City</b>',
-        color_discrete_sequence=["#ff0080"] * len(df_selection),
+        color_discrete_sequence=["#ff61a0"] * len(df_selection),
         template="plotly_white",
     )
     fig_product_sales.update_layout(
