@@ -156,9 +156,9 @@ with row7_1:
     z = np.array(df_corr)
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix['layout'].update(
-        title="Annotated Heatmap",
+        annotations=go.Annotations(),
         xaxis=go.XAxis(ticks='', side='top', ticksuffix='  '),
-        yaxis=go.YAxis(ticks='', side='right', ticksuffix='  '),  # ticksuffix is a workaround to add a bit of padding
+        yaxis=go.YAxis(ticks='', side='right', ticksuffix='  '),
         width=700,
         height=700,
         autosize=False
