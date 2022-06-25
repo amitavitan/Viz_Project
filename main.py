@@ -141,8 +141,12 @@ with row5_2:
         xaxis=(dict(showgrid=False))
     )
     avg = round(df_selection[df_selection[plot_x_per_city_selected] != 0][plot_x_per_city_selected].mean(), 2)
-
-    fig_product_sales.add_trace(go.Scatter(x=df_selection['City'], y=avg, name='High 2014',line=dict(color='firebrick', width=4)))
+    fig_product_sales.add_hline(y=avg, line_dash="dot",
+                  annotation_text=f"{title} Avg",
+                  annotation_position="bottom right",
+                  annotation_font_size=20,
+                  annotation_font_color="blue"
+                  )
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
 st.markdown("""---""")
