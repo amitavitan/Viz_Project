@@ -119,14 +119,14 @@ for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
         st.subheader(columns[i])
         avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 2)
-        st.subheader(f"avg: {avg}")
+        st.text(f"Average = {avg}")
 st.markdown("""---""")
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
         st.subheader(columns[i+5])
         avg = round(df_selection[df_selection[columns[i+5]] != 0][columns[i+5]].mean(), 2)
-        st.subheader(f"{avg:,}")
+        st.subheader(f"Average = {avg}")
 st.markdown("""---""")
 
 col_chart = st.selectbox(
