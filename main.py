@@ -173,25 +173,12 @@ row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 2.3, 
 with row7_1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
-    fig_corr_matrix.add_trace(
-        go.Heatmap(
-            x=df_corr.columns,
-            y=df_corr.index,
-            z=np.array(df_corr)
-        )
-    )
+    fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
     x = list(df_corr.columns)
     y = list(df_corr.index)
     z = np.array(df_corr)
-    fig_corr_matrix = ff.create_annotated_heatmap(
-        z,
-        x=x,
-        y=y,
-        annotation_text=np.around(z, decimals=2),
-        hoverinfo='z',
-        colorscale='RdPu',
-        showscale=True
-    )
+    fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
+    st.plotly_chart(fig_corr_matrix, use_container_width=True)
 with row7_2:
     st.subheader('Correlation Of Attributes')
 
