@@ -187,6 +187,7 @@ with row9_1:
         xaxis_title="Continent",
         yaxis_title="col1",
         legend_title="Legend Title",
+        paper_bgcolor="black"
         # font=dict(
         #     family="Caliberi",
         #     size=18,
