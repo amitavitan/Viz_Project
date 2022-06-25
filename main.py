@@ -103,12 +103,6 @@ with see_data:
 st.text('')
 
 # ---- SIDEBAR ----
-# st.sidebar.header("Please Filter Here:")
-# selected_cities = st.sidebar.multiselect(
-#     "Select the Cities:",
-#     options=df["City"].unique(),
-#     default=df["City"].unique()
-# )
 st.sidebar.header("Please Filter Here:")
 st.sidebar.markdown("**Select the cities you want to analyze**👇")
 container = st.container()
@@ -125,7 +119,7 @@ for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
         st.subheader(columns[i])
         avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 2)
-        st.subheader(f"{avg:,}")
+        st.subheader(f"avg: {avg}")
 st.markdown("""---""")
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
