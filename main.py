@@ -162,7 +162,6 @@ with row7_2:
 
 
 
-# '''HERE'''
 row8_spacer1, row8_1, row8_spacer2 = st.columns((.2, 7.1, .2))
 with row8_1:
     st.subheader('Analysis per Matchday')
