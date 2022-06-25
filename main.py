@@ -1,6 +1,7 @@
 import pandas as pd  # pip install pandas openpyxl
 import plotly.express as px  # pip install plotly-express
 import streamlit as st  # pip install streamlit
+import re
 from plotly.graph_objs import *
 import plotly.graph_objects as go
 import numpy as np
@@ -118,7 +119,7 @@ df_selection = df.loc[df['City'].isin(selected_cities)]
 st.subheader('Statistics - Columns Averages')
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
-        st.subheader(columns[i])
+        st.subheader(re.sub("[\(\[].*?[\)\]]", "", columns[i]))
         avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 2)
         st.markdown(f"{avg:,}")
 st.markdown("""---""")
