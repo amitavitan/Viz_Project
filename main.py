@@ -140,38 +140,46 @@ with row4_1:
     st.subheader('Analysis per City')
 row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row5_1:
-    st.markdown('Investigate a variety of stats for each city. Which team scores the most goals per game? How does your team compare in terms of distance ran per game?')
-    plot_x_per_city_selected = st.selectbox ("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
-    plot_x_per_city_type = st.selectbox("Which measure do you want to analyze?", measure_types, key='measure_team')
+    st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
+    plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
 with row5_2:
-    if all_cities_selected != 'Select teams manually (choose below)' or selected_teams:
-        plot_x_per_team(plot_x_per_city_selected, plot_x_per_city_type)
-    else:
-        st.warning('Please select at least one city')
+    fig_product_sales = px.bar(
+        df_selection,
+        x="City",
+        y=plot_x_per_city_selected,
+        # orientation="h",
+        title=f"<b>{plot_x_per_city_selected} Per City</b>",
+        color_discrete_sequence=["#0083B8"] * len(df_selection),
+        template="plotly_white",
+    )
+    fig_product_sales.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        xaxis=(dict(showgrid=False))
+    )
 
 
 
-col_chart = st.selectbox(
-    "Select Column For Graphs:",
-    options=columns,
-    index=0,
-)
-print(col_chart)
-
-# bar plot
-fig_product_sales = px.bar(
-    df_selection,
-    x="City",
-    y=col_chart,
-    # orientation="h",
-    title=f"<b>{col_chart} Per City</b>",
-    color_discrete_sequence=["#0083B8"] * len(df_selection),
-    template="plotly_white",
-)
-fig_product_sales.update_layout(
-    plot_bgcolor="rgba(0,0,0,0)",
-    xaxis=(dict(showgrid=False))
-)
+# col_chart = st.selectbox(
+#     "Select Column For Graphs:",
+#     options=columns,
+#     index=0,
+# )
+# print(col_chart)
+#
+# # bar plot
+# fig_product_sales = px.bar(
+#     df_selection,
+#     x="City",
+#     y=col_chart,
+#     # orientation="h",
+#     title=f"<b>{col_chart} Per City</b>",
+#     color_discrete_sequence=["#0083B8"] * len(df_selection),
+#     template="plotly_white",
+# )
+# fig_product_sales.update_layout(
+#     plot_bgcolor="rgba(0,0,0,0)",
+#     xaxis=(dict(showgrid=False))
+# )
 
 # correlation matrix plot
 df_corr = df_selection.corr()  # Generate correlation matrix
