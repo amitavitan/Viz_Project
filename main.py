@@ -160,14 +160,20 @@ with row7_1:
 with row7_2:
     st.subheader('Correlation Of Attributes')
 
-x1 = df_selection[df_selection['Outdoor activities(City)'] != 0].groupby('Continent')['Outdoor activities(City)'].agg(['mean']).reset_index("Continent")
-x2 = df_selection[df_selection['Sunshine hours(City)'] != 0].groupby('Continent')['Sunshine hours(City)'].agg(['mean']).reset_index("Continent")
 
 
-'''HERE'''
+# '''HERE'''
 row8_spacer1, row8_1, row8_spacer2 = st.columns((.2, 7.1, .2))
 with row8_1:
     st.subheader('Analysis per Matchday')
+    selected_col1 = st.selectbox("Select lifestyle parameter do you want to analyze?", options=columns, index=0)
+    selected_col2 = st.selectbox("Select another lifestyle parameter do you want to analyze?", options=columns, index=1)
+    x1 = df_selection[df_selection[selected_col1] != 0].groupby('Continent')[selected_col1].agg(['mean']).reset_index("Continent")
+    x2 = df_selection[df_selection[selected_col2] != 0].groupby('Continent')[selected_col2].agg(['mean']).reset_index("Continent")
+
+    title1 = re.sub("[\(\[].*?[\)\]]", "", selected_col1)
+    title2 = re.sub("[\(\[].*?[\)\]]", "", selected_col2)
+
 row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row9_1:
     fig_bubble = go.Figure(data=[go.Scatter(
@@ -179,13 +185,13 @@ with row9_1:
             size=40,
             showscale=True,
             colorscale="RdPu",
-            colorbar=dict(title="col2"),
+            colorbar=dict(title=title2),
         )
     )])
     fig_bubble.update_layout(
-        title="Continent Per col1 per col2",
+        title=f"Continent Per {title1} Per {title2}",
         xaxis_title="Continent",
-        yaxis_title="col1",
+        yaxis_title=title1,
         legend_title="Legend Title",
         plot_bgcolor="black"
         # font=dict(
