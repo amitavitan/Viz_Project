@@ -154,7 +154,7 @@ with row3_2:
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 10, .2))
 
 with row6_1:
-    selected_continent = st.sidebar.multiselect(df["Continent"].unique(), df["Continent"].unique())
+    selected_continent = st.sidebar.multiselect("", df["Continent"].unique(), df["Continent"].unique())
 continent_df = df.loc[df['Continent'].isin(selected_continent)]
 
 with row6_spacer1:
