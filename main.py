@@ -171,6 +171,8 @@ with row5_1:
 with row5_2:
     st.subheader('Correlation Of Attributes')
 
+st.markdown("""---""")
+
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
 with row6_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
