@@ -198,7 +198,7 @@ with row5_spacer1:
                    marker_line_width=4, marker_size=40,
                    hovertemplate='x: %{x}<br>y: %{y}<br>z: Chosen Parameters <extra></extra>'))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
-    fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=30, b=30), plot_bgcolor="rgba(0,0,0,0)")
+    fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=50, b=30), plot_bgcolor="rgba(0,0,0,0)")
 with row5_1:
     trend_line = LinearRegression().fit(np.array(df_selection[col1]).reshape(-1, 1),
                                         np.array(df_selection[col2])).predict(
@@ -209,7 +209,7 @@ with row5_1:
         go.Scatter(x=df_selection[col1], y=trend_line, mode="lines", name="Trend Line",
                    line={'dash': 'dash', 'color': 'black'}))
     st.plotly_chart(fig_trend, use_container_width=True)
-    fig_trend.update_layout(autosize=True, margin=dict(l=30, r=30, t=30, b=30), plot_bgcolor="rgba(0,0,0,0)")
+    fig_trend.update_layout(autosize=True, margin=dict(l=30, r=30, t=0, b=0), plot_bgcolor="rgba(0,0,0,0)")
 
 st.markdown("""---""")
 
