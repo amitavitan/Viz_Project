@@ -151,7 +151,7 @@ with row3_2:
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
-row6_1, space6, row_6_2 = st.columns((10, 2, 10))
+row6_1, space6, row_6_2 = st.columns((20, 0.5, 20))
 with row6_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
@@ -163,7 +163,7 @@ with row6_1:
         yanchor="bottom",
         y=1.02,
         xanchor="right",
-        x=0.68),
+        x=0.8),
         legend_title="",
                             )
     st.plotly_chart(world_fig, use_container_width=True)
