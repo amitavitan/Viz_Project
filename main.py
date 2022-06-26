@@ -203,7 +203,8 @@ with row5_1:
     trend_line = LinearRegression().fit(np.array(df_selection[col1]).reshape(-1, 1),
                                         np.array(df_selection[col2])).predict(
         np.array(df_selection[col1]).reshape(-1, 1))
-    fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent")
+    fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent",
+                           title=f'{title1} & {title2} Correlation Dived By Continent')
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
     fig_trend.add_trace(
         go.Scatter(x=df_selection[col1], y=trend_line, mode="lines", name="Trend Line",
