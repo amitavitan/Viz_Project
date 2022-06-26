@@ -163,7 +163,7 @@ with row6_1:
         yanchor="bottom",
         y=1.02,
         xanchor="right",
-        x=0.83),
+        x=0.85),
         legend_title="",
                             )
     st.plotly_chart(world_fig, use_container_width=True)
