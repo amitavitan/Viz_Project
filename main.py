@@ -190,7 +190,7 @@ with row5_2:
     # title1 = clean_col_name(selected_col1)
     # title2 = clean_col_name(selected_col2)
 
-    fig_trend = px.scatter(df_selection, x=selected_col1, y=selected_col2, color="Continent", trendline="ols", trendline_scope="overall")
+    fig_trend = px.scatter(df_selection, x=selected_col1, y=selected_col2, color="Continent", trendline="ols")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
     st.plotly_chart(fig_trend, use_container_width=True)
 st.markdown("""---""")
