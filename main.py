@@ -190,7 +190,7 @@ with row5_1:
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     fig_corr_matrix.add_trace(
-        go.Scatter(mode="markers", x=[col1, col2], y=[col1, col2], marker_symbol=[101],
+        go.Scatter(mode="markers", x=[col1, col2], y=[col2, col1], marker_symbol=[101],
                    marker_color="darkgray",
                    marker_line_width=2, marker_size=22, hovertemplate='x: %{x}<br>y: %{y}<br>z: %{z}<extra></extra>'))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
