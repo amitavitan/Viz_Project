@@ -154,8 +154,8 @@ with row7_1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
-    x = list(df_corr.columns)
-    y = list(df_corr.index)
+    x = [re.sub("[\(\[].*?[\)\]]", "", i) for i in list(df_corr.columns)]
+    y = [re.sub("[\(\[].*?[\)\]]", "", i) for i in list(df_corr.index)]
     print(x)
     print("--------")
     print(y)
