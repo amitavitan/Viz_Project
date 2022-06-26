@@ -183,11 +183,9 @@ with row4_1:
     title2 = clean_col_name(col2)
 row5_spacer1, row5_1 = st.columns((30, 30))
 with row5_spacer1:
-    df_corr = df_selection.corr()  # Generate correlation matrix
-    # del df_corr['Rank']
-    # df_corr = df_corr.drop(['Rank'])
-    # print(df_corr.columns)
-
+    df_selection2 = df_selection.copy()
+    del df_selection2['Rank']
+    df_corr = df_selection2.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
     x = clean_col_name(list(df_corr.columns), is_list=True)
