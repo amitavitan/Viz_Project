@@ -184,14 +184,18 @@ with row4_1:
 row5_spacer1, row5_1 = st.columns((30, 30))
 with row5_spacer1:
     df_corr = df_selection.corr()  # Generate correlation matrix
-    del df_corr['Rank']
-    df_corr = df_corr.drop(['Rank'])
+    # del df_corr['Rank']
+    # df_corr = df_corr.drop(['Rank'])
+    # print(df_corr.columns)
 
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
     x = clean_col_name(list(df_corr.columns), is_list=True)
     y = clean_col_name(list(df_corr.index), is_list=True)
     z = np.array(df_corr)
+    print(len(x))
+    print(len(y))
+    print(len(z))
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     fig_corr_matrix.add_trace(
