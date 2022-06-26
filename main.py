@@ -163,9 +163,7 @@ with row6_1:
         y=0.30,
         xanchor="left",
         title=''
-        ),
-
-                            )
+        ))
     st.plotly_chart(world_fig, use_container_width=True)
 with row_6_2:
     st.subheader('Heading.....')
@@ -177,6 +175,8 @@ with row4_1:
     st.subheader('Correlation Of Attributes')
     col1 = st.selectbox("Choose lifestyle parameter to analyze:", options=columns, index=0)
     col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
+    if col1 == col2:
+        st.warning('Pay Attention! You Should Select Two Different Columns')
     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
@@ -191,13 +191,11 @@ with row5_1:
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     fig_corr_matrix.add_trace(
-        go.Scatter(mode="markers", x=[title1], y=[title2], marker_symbol=[100],
-                   marker_color="Yellow",
-                   marker_line_width=4, marker_size=40, hovertemplate='x: %{x}<br>y: %{y}<br>z: Chosen Parameters <extra></extra>'))
+        go.Scatter(mode="markers", x=[title1], y=[title2], marker_symbol=[100], marker_color="Yellow",marker_line_width=4, marker_size=40, hovertemplate='x: %{x}<br>y: %{y}<br>z: Chosen Parameters <extra></extra>'))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
 with row5_2:
     trend_line = LinearRegression().fit(np.array(df_selection[col1]).reshape(-1, 1), np.array(df_selection[col2])).predict(np.array(df_selection[col1]).reshape(-1, 1))
-    fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent",  trendline="ols")#, trendline_scope="overall")
+    fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent")#,  trendline="ols")#, trendline_scope="overall")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
     fig_trend.add_trace(
         go.Scatter(x=df_selection[col1], y=trend_line, mode="lines", name="Error fit", marker_color="lightgreen"))
