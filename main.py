@@ -156,7 +156,7 @@ with row6_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
                          projection="natural earth")
-    world_fig.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10), plot_bgcolor='#f9ecf2')
+    world_fig.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10), paper_bgcolor='#f9ecf2')
     st.plotly_chart(world_fig, use_container_width=True)
 
 st.markdown("""---""")
