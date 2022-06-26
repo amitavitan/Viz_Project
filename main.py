@@ -167,7 +167,7 @@ with row6_1:
         legend_title="",
                             )
     st.plotly_chart(world_fig, use_container_width=True)
-with row6_2:
+with row_6_2:
     fig_product_sales = px.bar(
         df_selection,
         x="City",
