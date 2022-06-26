@@ -241,6 +241,7 @@ with row7_1:
     st.subheader('Analysis per Matchday')
     col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
     col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
+    # col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
