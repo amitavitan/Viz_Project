@@ -241,17 +241,16 @@ with row7_1:
     st.subheader('Analysis per Matchday')
     selected_col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
     selected_col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
-    x1 = df_selection[df_selection[selected_col1] != 0]
-    x2 = df_selection[df_selection[selected_col2] != 0]
+    X = df_selection[(df_selection[selected_col1] != 0) & (df_selection[selected_col2] != 0)]
     title1 = clean_col_name(selected_col1)
     title2 = clean_col_name(selected_col2)
 with row7_2:
-    fig_bubble = go.Figure(data=[go.Scatter(
-        x=x1[selected_col1],
-        y=x2[selected_col2],
+    fig_trend = go.Figure(data=[go.Scatter(
+        x=X[selected_col1],
+        y=X[selected_col2],
         mode='markers',
         marker=dict(
-            color=x2['Continent'],
+            color=X['Continent'],
             size=40,
             showscale=True,
             colorscale="RdPu",
@@ -259,7 +258,7 @@ with row7_2:
             line=dict(width=2, color='DarkSlateGrey')
         )
     )])
-    fig_bubble.update_layout(
+    fig_trend.update_layout(
         title=f"Continent Per {title1} Per {title2}",
         xaxis_title="Continent",
         yaxis_title=title1,
@@ -270,7 +269,7 @@ with row7_2:
         #     color="RebeccaPurple"
         # )
     )
-    st.plotly_chart(fig_bubble, use_container_width=False)
+    st.plotly_chart(fig_trend, use_container_width=False)
 
 
 
