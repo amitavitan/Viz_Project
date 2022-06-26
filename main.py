@@ -163,7 +163,7 @@ with row7_1:
     print(y)
     z = np.array(df_corr)
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
-    fig_corr_matrix.update_layout(autosize=True, margin=dict(l=20, r=20, t=20, b=20))
+    fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
 with row7_2:
     st.subheader('Correlation Of Attributes')
