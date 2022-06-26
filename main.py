@@ -195,7 +195,7 @@ with row5_spacer1:
         go.Scatter(mode="markers", x=[title1], y=[title2], marker_symbol=[100], marker_color="Yellow",marker_line_width=4, marker_size=40, hovertemplate='x: %{x}<br>y: %{y}<br>z: Chosen Parameters <extra></extra>'))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=30, b=30), plot_bgcolor="rgba(0,0,0,0)")
-with row5_spacer2:
+with row5_1:
     trend_line = LinearRegression().fit(np.array(df_selection[col1]).reshape(-1, 1), np.array(df_selection[col2])).predict(np.array(df_selection[col1]).reshape(-1, 1))
     fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
