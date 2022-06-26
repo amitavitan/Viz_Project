@@ -241,58 +241,13 @@ with row7_1:
     st.subheader('Analysis per Matchday')
     col1 = st.selectbox("Choose lifestyle parameter to analyze:", options=columns, index=0)
     col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
-    # col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
-    # print(len(X[col1]))
-    # print(len(X[col2]))
-    lst = list(X['Continent'])
-    # colors = {
-    #     "Oxygen": "#bf230f",
-    #     "Hydrogen": '##8c2d20',
-    #     "Carbon_Dioxide": "#d94f3d",
-    #     "Nitrogene": "#8c2d20"
-    # }
-    d = {'Europe': 0, 'Australia': 1, 'Africa': 2, 'Asia': 3, ' North America': 4, 'South America': 5}
-    lst_new = [d[x] for x in lst]
-    def get_key(val):
-        for key, value in d.items():
-            if val == value:
-                return key
-    # con_color_name = [get_key(i)for i in lst_new if]
-    # print(lst_new)
-    # print(temp.astype(int))
-    # print((X['Continent'].))
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
 with row7_2:
-    fig_trend = px.scatter(data_frame=df_selection, x="Sunshine hours(City)", y="Happiness levels(Country)", color="Continent",  trendline="ols")#, trendline_scope="overall")
+    fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent",  trendline="ols")#, trendline_scope="overall")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
     st.plotly_chart(fig_trend, use_container_width=True)
-    # fig_trend = go.Figure(data=[go.Scatter(
-    #     x=X[col1],
-    #     y=X[col2],
-    #     mode='markers',
-    #     marker=dict(
-    #         color=lst_new,
-    #         size=40,
-    #         # showscale=True,
-    #         color_discrete_sequence=[],
-    #         colorbar=dict(title=title2),
-    #         line=dict(width=2, color='DarkSlateGrey')
-    #     )
-    # )])
-    # fig_trend.update_layout(
-    #     title=f"Continent Per {title1} Per {title2}",
-    #     xaxis_title="Continent",
-    #     yaxis_title=title1,
-    #     legend_title="Legend Title",
-        # font=dict(
-        #     family="Caliberi",
-        #     size=18,
-        #     color="RebeccaPurple"
-        # )
-    # )
-    # st.plotly_chart(fig_trend, use_container_width=False)
 
 
 
