@@ -222,45 +222,6 @@ with row8_2:
 
 
 
-# row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
-# with row9_1:
-
-# with row9_2:
-#     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
-#         plot_x_per_matchday(plot_x_per_matchday_selected, plot_x_per_matchday_type)
-#     else:
-#         st.warning('Please select at least one team')
-
-
-############# correlation matrix plot
-# df_corr = df_selection.corr()  # Generate correlation matrix
-# fig_corr_matrix = go.Figure()
-# fig_corr_matrix.add_trace(
-#     go.Heatmap(
-#         x=df_corr.columns,
-#         y=df_corr.index,
-#         z=np.array(df_corr)
-#     )
-# )
-# x = list(df_corr.columns)
-# y = list(df_corr.index)
-# z = np.array(df_corr)
-# fig_corr_matrix = ff.create_annotated_heatmap(
-#     z,
-#     x=x,
-#     y=y ,
-#     annotation_text=np.around(z, decimals=2),
-#     hoverinfo='z',
-#     colorscale='RdPu',
-#     showscale=True
-#     )
-#
-#
-# mid = st.columns(2)
-# # left_column.plotly_chart(fig_hourly_sales, use_container_width=True)
-# mid[0].plotly_chart(fig_product_sales, use_container_width=True)
-# mid[1].plotly_chart(fig_corr_matrix, use_container_width=True)
-
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
             <style>
