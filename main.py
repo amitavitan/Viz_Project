@@ -151,7 +151,7 @@ st.markdown("""---""")
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
 with row6_1:
     st.subheader('Correlation Of Attributes')
-row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.1, 4.1, .4, 3.5, .2))
+row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.08, 4.1, .4, 3.5, .2))
 with row7_1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
