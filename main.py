@@ -223,7 +223,7 @@ with row5_2:
     # Layout of the plot
     layout = go.Layout(title='Grouping')
     fig = go.Figure(data=data, layout=layout)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=False)
 st.markdown("""---""")
 
 
