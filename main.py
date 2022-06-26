@@ -215,18 +215,19 @@ with row5_2:
     # fig_trend.update_traces(marker_line_width=1, marker_size=12)
     # st.plotly_chart(fig_trend, use_container_width=True)
 
-    data = []
+    data_t = []
     for group in df_selection["Continent"].unique():
+        print(group)
         df_group = df_selection[df_selection['Continent'] == group]
         trace = go.Scatter(x=df_selection[selected_col1],
                            y=df_selection[selected_col2],
                            mode='markers',
                            name=group)
-        data.append(trace)
+        data_t.append(trace)
 
     # Layout of the plot
     layout = go.Layout(title='Grouping')
-    fig = go.Figure(data=data, layout=layout)
+    fig = go.Figure(data=data_t, layout=layout)
     st.plotly_chart(fig, use_container_width=True)
 st.markdown("""---""")
 
