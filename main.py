@@ -151,6 +151,12 @@ with row3_2:
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
+row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
+with row6_1:
+    world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
+                         hover_name="City", size = plot_x_per_city_selected,
+                         projection="natural earth")
+    st.plotly_chart(world_fig, use_container_width=True)
 
 st.markdown("""---""")
 
@@ -173,14 +179,7 @@ with row5_2:
 
 st.markdown("""---""")
 
-row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
-with row6_1:
-    world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
-                         hover_name="City", size = plot_x_per_city_selected,
-                         projection="natural earth")
-    st.plotly_chart(world_fig, use_container_width=True)
 
-st.markdown("""---""")
 
 row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
 with row7_1:
