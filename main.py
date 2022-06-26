@@ -201,8 +201,14 @@ with row5_1:
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
 with row5_2:
-    st.subheader('Correlation Of Attributes')
+    selected_col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
+    selected_col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
+    # title1 = clean_col_name(selected_col1)
+    # title2 = clean_col_name(selected_col2)
 
+    fig_trend = px.scatter(df_selection, x=selected_col1, y=selected_col2, color="Continent", trendline="ols")
+    fig_trend.update_traces(marker_line_width=1, marker_size=12)
+    st.plotly_chart(fig_trend, use_container_width=True)
 st.markdown("""---""")
 
 
