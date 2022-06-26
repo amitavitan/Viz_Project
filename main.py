@@ -160,9 +160,11 @@ with row6_1:
                          title=f'<b>{title} Per City & Continent Map</b>')
     world_fig.update_layout(autosize=True, margin=dict(l=10, r=10, t=30, b=10), plot_bgcolor="rgba(0,0,0,0)", legend=dict(
         yanchor="top",
-        y=0.53,
+        y=0.30,
         xanchor="left",
-        x=0)
+        title=''
+        ),
+
                             )
     st.plotly_chart(world_fig, use_container_width=True)
 with row_6_2:
@@ -184,9 +186,7 @@ with row5_1:
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
     x = clean_col_name(list(df_corr.columns), is_list=True)
-    print(df_corr)
     y = clean_col_name(list(df_corr.index), is_list=True)
-    print(y)
     z = np.array(df_corr)
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
