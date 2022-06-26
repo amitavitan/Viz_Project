@@ -155,8 +155,9 @@ row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 10, .2))
 with row6_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
-                         projection="natural earth")
-    world_fig.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10), plot_bgcolor="rgba(0,0,0,0)",legend=dict(
+                         projection="natural earth",
+                        title=f'<b>{title} Per City & Continent Map</b>',)
+    world_fig.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10), plot_bgcolor="rgba(0,0,0,0)", legend=dict(
         orientation="h",
         yanchor="bottom",
         y=1.02,
