@@ -150,7 +150,7 @@ with row5_2:
     avg = round(df_selection[df_selection[plot_x_per_city_selected] != 0][plot_x_per_city_selected].mean(), 2)
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
-world_mape = st.columns()
+world_mape = st.columns(1)
 with world_mape:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
