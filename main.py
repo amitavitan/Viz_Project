@@ -239,7 +239,7 @@ st.markdown("""---""")
 row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
 with row7_1:
     st.subheader('Analysis per Matchday')
-    col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
+    col1 = st.selectbox("Whichhhh lifestyle parameter do you want to analyze?", options=columns, index=0)
     col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
     # col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
