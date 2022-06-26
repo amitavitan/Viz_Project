@@ -208,40 +208,11 @@ with row5_2:
     st.subheader('ssdefsvf Of Attributes')
     selected_col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
     selected_col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
-    # title1 = clean_col_name(selected_col1)
-    # title2 = clean_col_name(selected_col2)
-
-    fig_trend = px.scatter(data_frame=df_selection, x=selected_col1, y=selected_col2, color='Continent')#, trendline="ols", trendline_scope="overall"
-    # fig_trend.update_traces(marker_line_width=1, marker_size=12)
-    # data_t = []
-    # for group in df_selection["Continent"].unique():
-    #     print(group)
-    #     df_group = df_selection[df_selection['Continent'] == group]
-    #     trace = go.Scatter(x=df_selection[selected_col1],
-    #                        y=df_selection[selected_col2],
-    #                        mode='markers',
-    #                        name=group)
-    #     data_t.append(trace)
-    #
-    # # Layout of the plot
-    # layout = go.Layout(title='Grouping')
-    # fig_trend = go.Figure(data=data_t, layout=layout)
-    st.plotly_chart(fig_trend, use_container_width=True)
-st.markdown("""---""")
-
-
-
-row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
-with row7_1:
-    st.subheader('Analysis per Matchday')
-    selected_col1 = st.selectbox("Select lifestyle parameter do you want to analyze?", options=columns, index=0)
-    selected_col2 = st.selectbox("Select another lifestyle parameter do you want to analyze?", options=columns, index=1)
     x1 = df_selection[df_selection[selected_col1] != 0].groupby('Continent')[selected_col1].agg(['mean']).reset_index("Continent")
     x2 = df_selection[df_selection[selected_col2] != 0].groupby('Continent')[selected_col2].agg(['mean']).reset_index("Continent")
 
     title1 = clean_col_name(selected_col1)
     title2 = clean_col_name(selected_col2)
-with row7_2:
     fig_bubble = go.Figure(data=[go.Scatter(
         x=x1['Continent'],
         y=x1['mean'],
@@ -267,6 +238,47 @@ with row7_2:
         # )
     )
     st.plotly_chart(fig_bubble, use_container_width=False)
+
+st.markdown("""---""")
+
+
+
+# row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
+# with row7_1:
+#     st.subheader('Analysis per Matchday')
+#     selected_col1 = st.selectbox("Select lifestyle parameter do you want to analyze?", options=columns, index=0)
+#     selected_col2 = st.selectbox("Select another lifestyle parameter do you want to analyze?", options=columns, index=1)
+#     x1 = df_selection[df_selection[selected_col1] != 0].groupby('Continent')[selected_col1].agg(['mean']).reset_index("Continent")
+#     x2 = df_selection[df_selection[selected_col2] != 0].groupby('Continent')[selected_col2].agg(['mean']).reset_index("Continent")
+#
+#     title1 = clean_col_name(selected_col1)
+#     title2 = clean_col_name(selected_col2)
+# with row7_2:
+#     fig_bubble = go.Figure(data=[go.Scatter(
+#         x=x1['Continent'],
+#         y=x1['mean'],
+#         mode='markers',
+#         marker=dict(
+#             color=x2['mean'],
+#             size=40,
+#             showscale=True,
+#             colorscale="RdPu",
+#             colorbar=dict(title=title2),
+#             line=dict(width=2, color='DarkSlateGrey')
+#         )
+#     )])
+#     fig_bubble.update_layout(
+#         title=f"Continent Per {title1} Per {title2}",
+#         xaxis_title="Continent",
+#         yaxis_title=title1,
+#         legend_title="Legend Title",
+#         # font=dict(
+#         #     family="Caliberi",
+#         #     size=18,
+#         #     color="RebeccaPurple"
+#         # )
+#     )
+#     st.plotly_chart(fig_bubble, use_container_width=False)
 
 
 
