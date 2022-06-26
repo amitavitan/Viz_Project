@@ -151,7 +151,7 @@ with row3_2:
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
-row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 10, .2))
+row6_1, space6, row_6_2 = st.columns((20, 0.5, 20))
 with row6_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
@@ -163,10 +163,26 @@ with row6_1:
         yanchor="bottom",
         y=1.02,
         xanchor="right",
-        x=0.68),
+        x=0.82),
         legend_title="",
                             )
     st.plotly_chart(world_fig, use_container_width=True)
+with row_6_2:
+    fig_product_sales = px.bar(
+        df_selection,
+        x="City",
+        y=plot_x_per_city_selected,
+        title=f'<b>{title} Per City</b>',
+        color_discrete_sequence=["rgb(73,0,106)"] * len(df_selection),
+        template="plotly_white",
+    )
+    fig_product_sales.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        xaxis=(dict(showgrid=False))
+    )
+    avg = round(df_selection[df_selection[plot_x_per_city_selected] != 0][plot_x_per_city_selected].mean(), 2)
+    fig_product_sales.add_hline(y=avg, line_dash="dot")
+    st.plotly_chart(fig_product_sales, use_container_width=True)
 
 st.markdown("""---""")
 
