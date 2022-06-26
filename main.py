@@ -159,9 +159,10 @@ with row6_1:
                          projection="natural earth",
                          title=f'<b>{title} Per City & Continent Map</b>')
     world_fig.update_layout(autosize=True, margin=dict(l=10, r=10, t=30, b=10), plot_bgcolor="rgba(0,0,0,0)", legend=dict(
-        yanchor="top",
-        y=0.30,
-        xanchor="left",
+        # yanchor="top",
+        y=0,
+        x = 1,
+        # xanchor="left",
         title=''
         ))
     st.plotly_chart(world_fig, use_container_width=True)
