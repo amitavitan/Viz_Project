@@ -77,8 +77,8 @@ with row0_1:
 with row0_2:
     st.text("")
     st.subheader('Streamlit App by Amit Avitan & Emily Toyber')
-row3_spacer1, row3_1, row3_spacer2 = st.columns((.1, 3.2, .1))
-with row3_1:
+row1_spacer1, row1_1, row1_spacer2 = st.columns((.1, 3.2, .1))
+with row1_1:
     st.markdown("first paragraph - introduction")
     st.markdown("second paragraph - explanation and github repo")
 
@@ -126,15 +126,15 @@ st.markdown("""---""")
 ################
 ### ANALYSIS ###
 ################
-row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
-with row4_1:
+row2_spacer1, row2_1, row4_spacer2 = st.columns((.2, 7.1, .2))
+with row2_1:
     st.subheader('Analysis per City')
-row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3 = st.columns((.2, 2.3, .4, 4.4, .2))
-with row5_1:
+row3_spacer1, row3_1, row3_spacer2, row3_2, row3_spacer3 = st.columns((.2, 2.3, .4, 4.4, .2))
+with row3_1:
     st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
     title = clean_col_name(plot_x_per_city_selected)
-with row5_2:
+with row3_2:
     fig_product_sales = px.bar(
         df_selection,
         x="City",
@@ -151,8 +151,8 @@ with row5_2:
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
-row4_spacer2, row4_12, row4_spacer22 = st.columns((.2, 7.1, .2))
-with row4_12:
+row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
+with row4_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
                          projection="natural earth")
@@ -160,31 +160,28 @@ with row4_12:
 
 st.markdown("""---""")
 
-row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
-with row6_1:
+row5_spacer1, row5_1, row5_spacer2 = st.columns((.2, 7.1, .2))
+with row5_1:
     st.subheader('Correlation Of Attributes')
-row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.1, 4.1, .4, 3.5, .2))
-with row7_1:
+row6_spacer1, row6_1, row6_spacer2, row6_2, row6_spacer3 = st.columns((.1, 4.1, .4, 3.5, .2))
+with row6_1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
     x = clean_col_name(list(df_corr.columns), is_list=True)
     y = clean_col_name(list(df_corr.index), is_list=True)
-    print(x)
-    print("--------")
-    print(y)
     z = np.array(df_corr)
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
-with row7_2:
+with row6_2:
     st.subheader('Correlation Of Attributes')
 
 
 st.markdown("""---""")
 
-row8_spacer1, row8_1, row8_spacer2, row8_2, row8_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
-with row8_1:
+row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
+with row7_1:
     st.subheader('Analysis per Matchday')
     selected_col1 = st.selectbox("Select lifestyle parameter do you want to analyze?", options=columns, index=0)
     selected_col2 = st.selectbox("Select another lifestyle parameter do you want to analyze?", options=columns, index=1)
@@ -193,7 +190,7 @@ with row8_1:
 
     title1 = clean_col_name(selected_col1)
     title2 = clean_col_name(selected_col2)
-with row8_2:
+with row7_2:
     fig_bubble = go.Figure(data=[go.Scatter(
         x=x1['Continent'],
         y=x1['mean'],
