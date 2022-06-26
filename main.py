@@ -156,7 +156,7 @@ with row6_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
                          projection="natural earth",
-                         title=f'<b>{title} Per City & Continent Map</b>')
+                         title=f'{title} Per City & Continent Map')
     world_fig.update_layout(autosize=True, margin=dict(l=15, r=15, t=15, b=15), plot_bgcolor="rgba(0,0,0,0)", legend=dict(
         yanchor="top",
         y=0.53,
