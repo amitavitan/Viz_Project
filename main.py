@@ -239,20 +239,19 @@ st.markdown("""---""")
 row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
 with row7_1:
     st.subheader('Analysis per Matchday')
-    selected_col1 = st.selectbox("Select lifestyle parameter do you want to analyze?", options=columns, index=0)
-    selected_col2 = st.selectbox("Select another lifestyle parameter do you want to analyze?", options=columns, index=1)
-    x1 = df_selection[df_selection[selected_col1] != 0].groupby('Continent')[selected_col1].agg(['mean']).reset_index("Continent")
-    x2 = df_selection[df_selection[selected_col2] != 0].groupby('Continent')[selected_col2].agg(['mean']).reset_index("Continent")
-
+    selected_col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
+    selected_col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
+    x1 = df_selection[df_selection[selected_col1] != 0]
+    x2 = df_selection[df_selection[selected_col2] != 0]
     title1 = clean_col_name(selected_col1)
     title2 = clean_col_name(selected_col2)
 with row7_2:
     fig_bubble = go.Figure(data=[go.Scatter(
-        x=x1['Continent'],
-        y=x1['mean'],
+        x=x1[selected_col1],
+        y=x2[selected_col2],
         mode='markers',
         marker=dict(
-            color=x2['mean'],
+            color=x2['Continent'],
             size=40,
             showscale=True,
             colorscale="RdPu",
