@@ -159,12 +159,16 @@ with row6_1:
                         # title=f'<b>{title} Per City & Continent Map</b>',
                                )
     world_fig.update_layout(autosize=True, margin=dict(l=15, r=15, t=15, b=15), plot_bgcolor="rgba(0,0,0,0)", legend=dict(
-        orientation="h",
+        # orientation="v",
+        # yanchor="bottom",
+        # y=1.02,
+        # xanchor="right",
+        # x=0.85),
+        # legend_title="",
         yanchor="bottom",
-        y=1.02,
-        xanchor="right",
-        x=0.85),
-        legend_title="",
+        # y=0.5,
+        xanchor="left",
+        x=0)
                             )
     st.plotly_chart(world_fig, use_container_width=True)
 with row_6_2:
