@@ -129,27 +129,9 @@ st.markdown("""---""")
 row2_spacer1, row2_1, row2_spacer2 = st.columns((.2, 7.1, .2))
 with row2_1:
     st.subheader('Analysis per City')
-row3_spacer1, row3_1, row3_spacer2, row3_2, row3_spacer3 = st.columns((.2, 2.3, .4, 4.4, .2))
-with row3_1:
     st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
     title = clean_col_name(plot_x_per_city_selected)
-with row3_2:
-    fig_product_sales = px.bar(
-        df_selection,
-        x="City",
-        y=plot_x_per_city_selected,
-        title=f'<b>{title} Per City</b>',
-        color_discrete_sequence=["rgb(73,0,106)"] * len(df_selection),
-        template="plotly_white",
-    )
-    fig_product_sales.update_layout(
-        plot_bgcolor="rgba(0,0,0,0)",
-        xaxis=(dict(showgrid=False))
-    )
-    avg = round(df_selection[df_selection[plot_x_per_city_selected] != 0][plot_x_per_city_selected].mean(), 2)
-    fig_product_sales.add_hline(y=avg, line_dash="dot")
-    st.plotly_chart(fig_product_sales, use_container_width=True)
 
 row6_1, space6, row_6_2 = st.columns((20, 0.5, 20))
 with row6_1:
