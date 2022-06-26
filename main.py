@@ -157,7 +157,7 @@ with row6_1:
                          hover_name="City", size = plot_x_per_city_selected,
                          projection="natural earth")
     world_fig.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
-    st.plotly_chart(world_fig, use_container_width=True)
+    st.plotly_chart(world_fig, use_container_width=False)
 
 st.markdown("""---""")
 
