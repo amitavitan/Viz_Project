@@ -129,7 +129,7 @@ st.markdown("""---""")
 row2_spacer1, row2_1, row2_spacer2 = st.columns((.2, 7.1, .2))
 with row2_1:
     st.subheader('Analysis per City')
-row3_spacer1, row3_1, row3_spacer2, row3_2, row3_spacer3 = st.columns((.2, 2.0, .4, 6, .2))
+row3_spacer1, row3_1, row3_spacer2, row3_2 = st.columns((.2, 2.2, .4, 6))
 with row3_1:
     st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
@@ -151,7 +151,7 @@ with row3_2:
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
-row6_1, space6, row_6_2 = st.columns((20, 0.5, 20))
+row6_1, space6, row_6_2 = st.columns((20, 0.5, 6))
 with row6_1:
     world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
