@@ -44,6 +44,10 @@ def get_data_from_excel():
     data.loc[[9, 14, 24, 26, 29, 33, 40, 41, 43], "Continent"] = ' North America'
     data.loc[[13, 35], "Continent"] = 'South America'
     data.loc[[22, 38], "Continent"] = 'Africa'
+    iso_alpha3 = ['NLD', 'AUS', 'AUT', 'SWE', 'DNK', 'FIN', 'JPN', 'DEU', 'ESP', 'CAN', 'AUS', 'CHN', 'THA', 'ARG', 'CAN', 'ESP',
+     'IDN', 'KOR', 'DEU', 'CHE', 'ISR', 'TUR', 'EGY', 'TWN', 'USA', 'IND', 'USA', 'IRL', 'JPN', 'USA', 'HKG', 'CHN',
+     'BEL', 'USA', 'FRA', 'BRA', 'CHE', 'GBR', 'ZAF', 'ITA', 'USA', 'USA', 'RUS', 'MEX']
+    data['iso_alpha'] = iso_alpha3
 
     return data
 
@@ -53,6 +57,7 @@ columns = list(df.columns)
 columns.remove("City")
 columns.remove("Rank")
 columns.remove("Continent")
+columns.remove('iso_alpha')
 
 
 def clean_col_name(col_name, is_list=False):
@@ -145,6 +150,12 @@ with row5_2:
     avg = round(df_selection[df_selection[plot_x_per_city_selected] != 0][plot_x_per_city_selected].mean(), 2)
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
+
+with st.columns(1):
+    world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
+                         hover_name="City", size = plot_x_per_city_selected,
+                         projection="natural earth")
+    st.plotly_chart(world_fig, use_container_width=True)
 
 st.markdown("""---""")
 
