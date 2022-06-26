@@ -166,7 +166,7 @@ with row6_1:
         # x=0.85),
         # legend_title="",
         yanchor="top",
-        y=0.5,
+        y=0.53,
         xanchor="left",
         x=0)
                             )
