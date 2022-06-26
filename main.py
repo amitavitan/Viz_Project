@@ -55,8 +55,10 @@ columns.remove("Rank")
 columns.remove("Continent")
 
 
-
-# st.dataframe(df)
+def clean_col_name(col_name, is_list=False):
+    if is_list:
+        return [re.sub("[\(\[].*?[\)\]]", "", col) for col in col_name]
+    return re.sub("[\(\[].*?[\)\]]", "", col_name)
 
 ####################
 ### INTRODUCTION ###
@@ -103,14 +105,14 @@ df_selection = df.loc[df['City'].isin(selected_cities)]
 st.subheader('Statistics - Columns Averages')
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
-        st.subheader(re.sub("[\(\[].*?[\)\]]", "", columns[i]))
+        st.subheader(clean_col_name(columns[i]))
         avg = round(df_selection[df_selection[columns[i]] != 0][columns[i]].mean(), 2)
         st.markdown(f"{avg:,}")
 st.markdown("""---""")
 
 for i, place in enumerate(st.columns(int(len(columns)/2))):
     with place:
-        st.subheader(re.sub("[\(\[].*?[\)\]]", "", columns[i+5]))
+        st.subheader(clean_col_name(columns[i+5]))
         avg = round(df_selection[df_selection[columns[i+5]] != 0][columns[i+5]].mean(), 2)
         st.markdown(f"{avg:,}")
 st.markdown("""---""")
@@ -126,7 +128,7 @@ row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3 = st.columns((.2, 2.3, 
 with row5_1:
     st.markdown('Investigate a variety of stats for each city. In which city is life expectancy highest? Which city has the most air pollution?')
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
-    title = re.sub("[\(\[].*?[\)\]]", "", plot_x_per_city_selected)
+    title = clean_col_name(plot_x_per_city_selected)
 with row5_2:
     fig_product_sales = px.bar(
         df_selection,
@@ -154,8 +156,8 @@ with row7_1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
-    x = [re.sub("[\(\[].*?[\)\]]", "", i) for i in list(df_corr.columns)]
-    y = [re.sub("[\(\[].*?[\)\]]", "", i) for i in list(df_corr.index)]
+    x = clean_col_name(list(df_corr.columns), is_list=True)
+    y = clean_col_name(list(df_corr.index), is_list=True)
     print(x)
     print("--------")
     print(y)
@@ -177,8 +179,8 @@ with row8_1:
     x1 = df_selection[df_selection[selected_col1] != 0].groupby('Continent')[selected_col1].agg(['mean']).reset_index("Continent")
     x2 = df_selection[df_selection[selected_col2] != 0].groupby('Continent')[selected_col2].agg(['mean']).reset_index("Continent")
 
-    title1 = re.sub("[\(\[].*?[\)\]]", "", selected_col1)
-    title2 = re.sub("[\(\[].*?[\)\]]", "", selected_col2)
+    title1 = clean_col_name(selected_col1)
+    title2 = clean_col_name(selected_col2)
 with row8_2:
     fig_bubble = go.Figure(data=[go.Scatter(
         x=x1['Continent'],
