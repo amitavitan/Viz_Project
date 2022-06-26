@@ -265,22 +265,9 @@ with row7_1:
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
 with row7_2:
-    fig_trend = go.Figure()
-    for x, y, color in zip(X[col1], X[col2], lst_new):
-        fig_trend.add_trace(
-            go.Scatter(
-                x=[x],
-                y=[y],
-                name=get_key(color),
-                mode='markers',
-                marker=dict(color=color)
-            )
-        )
-
-    fig_trend.update_xaxes(tickfont=dict(size=20))
-
-    fig_trend.update_layout(legend_itemsizing='trace')
-
+    fig_trend = px.scatter(data_frame=df_selection, x="Sunshine hours(City)", y="Happiness levels(Country)", color="Continent")
+    fig_trend.update_traces(marker_line_width=1, marker_size=12)
+    st.plotly_chart(fig_trend, use_container_width=True)
     # fig_trend = go.Figure(data=[go.Scatter(
     #     x=X[col1],
     #     y=X[col2],
@@ -289,7 +276,7 @@ with row7_2:
     #         color=lst_new,
     #         size=40,
     #         # showscale=True,
-    #         # colorscale="RdPu",
+    #         color_discrete_sequence=[],
     #         colorbar=dict(title=title2),
     #         line=dict(width=2, color='DarkSlateGrey')
     #     )
@@ -299,13 +286,13 @@ with row7_2:
     #     xaxis_title="Continent",
     #     yaxis_title=title1,
     #     legend_title="Legend Title",
-    #     # font=dict(
-    #     #     family="Caliberi",
-    #     #     size=18,
-    #     #     color="RebeccaPurple"
-    #     # )
+        # font=dict(
+        #     family="Caliberi",
+        #     size=18,
+        #     color="RebeccaPurple"
+        # )
     # )
-    st.plotly_chart(fig_trend, use_container_width=False)
+    # st.plotly_chart(fig_trend, use_container_width=False)
 
 
 
