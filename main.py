@@ -166,9 +166,9 @@ with row6_1:
         # x=0.85),
         # legend_title="",
         yanchor="top",
-        y=0.3,
+        y=0.7,
         xanchor="left",
-        x=0.01)
+        x=0)
                             )
     st.plotly_chart(world_fig, use_container_width=True)
 with row_6_2:
