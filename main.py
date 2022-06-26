@@ -267,8 +267,8 @@ with row7_2:
         marker=dict(
             color=lst_new,
             size=40,
-            # showscale=True,
-            # colorscale="RdPu",
+            showscale=True,
+            colorscale="RdPu",
             colorbar=dict(title=title2),
             line=dict(width=2, color='DarkSlateGrey')
         )
