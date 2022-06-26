@@ -199,7 +199,7 @@ with row5_2:
     fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
     fig_trend.add_trace(
-        go.Scatter(x=df_selection[col1], y=trend_line, mode="lines", name="Trend Line", marker_color="black", marker_size=10))
+        go.Scatter(x=df_selection[col1], y=trend_line, mode="lines", name="Trend Line", marker_color="black", marker_size=15))
     st.plotly_chart(fig_trend, use_container_width=True)
 
 st.markdown("""---""")
