@@ -135,7 +135,7 @@ with row5_2:
         x="City",
         y=plot_x_per_city_selected,
         title=f'<b>{title} Per City</b>',
-        color_discrete_sequence=["#e6005c"] * len(df_selection),
+        color_discrete_sequence=["rgb(73,0,106)"] * len(df_selection),
         template="plotly_white",
     )
     fig_product_sales.update_layout(
@@ -163,7 +163,7 @@ with row7_1:
     print(y)
     z = np.array(df_corr)
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
-    fig_corr_matrix.update_layout(autosize=True, margin=dict(l=0, r=10, t=10, b=10))
+    fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
 with row7_2:
     st.subheader('Correlation Of Attributes')
