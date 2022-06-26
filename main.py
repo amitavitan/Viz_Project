@@ -252,38 +252,59 @@ with row7_1:
     #     "Carbon_Dioxide": "#d94f3d",
     #     "Nitrogene": "#8c2d20"
     # }
-    d = {x: i for i, x in enumerate(set(lst))}
+    d = {'Europe': 0, 'Australia': 1, 'Africa': 2, 'Asia': 3, ' North America': 4, 'South America': 5}
     lst_new = [d[x] for x in lst]
-    print(lst_new)
+    def get_key(val):
+        for key, value in d.items():
+            if val == value:
+                return key
+    # con_color_name = [get_key(i)for i in lst_new if]
+    # print(lst_new)
     # print(temp.astype(int))
     # print((X['Continent'].))
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
 with row7_2:
-    fig_trend = go.Figure(data=[go.Scatter(
-        x=X[col1],
-        y=X[col2],
-        mode='markers',
-        marker=dict(
-            color=lst_new,
-            size=40,
-            # showscale=True,
-            # colorscale="RdPu",
-            colorbar=dict(title=title2),
-            line=dict(width=2, color='DarkSlateGrey')
+    fig_trend = go.Figure()
+    for x, y, color in zip(X[col1], X[col2], lst_new):
+        fig_trend.add_trace(
+            go.Scatter(
+                x=[x],
+                y=[y],
+                name=get_key(color),
+                mode='markers',
+                marker=dict(color=color)
+            )
         )
-    )])
-    fig_trend.update_layout(
-        title=f"Continent Per {title1} Per {title2}",
-        xaxis_title="Continent",
-        yaxis_title=title1,
-        legend_title="Legend Title",
-        # font=dict(
-        #     family="Caliberi",
-        #     size=18,
-        #     color="RebeccaPurple"
-        # )
-    )
+
+    fig_trend.update_xaxes(tickfont=dict(size=20))
+
+    fig_trend.update_layout(legend_itemsizing='trace')
+
+    # fig_trend = go.Figure(data=[go.Scatter(
+    #     x=X[col1],
+    #     y=X[col2],
+    #     mode='markers',
+    #     marker=dict(
+    #         color=lst_new,
+    #         size=40,
+    #         # showscale=True,
+    #         # colorscale="RdPu",
+    #         colorbar=dict(title=title2),
+    #         line=dict(width=2, color='DarkSlateGrey')
+    #     )
+    # )])
+    # fig_trend.update_layout(
+    #     title=f"Continent Per {title1} Per {title2}",
+    #     xaxis_title="Continent",
+    #     yaxis_title=title1,
+    #     legend_title="Legend Title",
+    #     # font=dict(
+    #     #     family="Caliberi",
+    #     #     size=18,
+    #     #     color="RebeccaPurple"
+    #     # )
+    # )
     st.plotly_chart(fig_trend, use_container_width=False)
 
 
