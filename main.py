@@ -250,7 +250,7 @@ with row7_2:
         y=X[selected_col2],
         mode='markers',
         marker=dict(
-            color=X['Continent'],
+            # color=X['Continent'].unique(),
             size=40,
             showscale=True,
             colorscale="RdPu",
