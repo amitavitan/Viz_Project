@@ -181,8 +181,8 @@ with row4_1:
     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
-row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3 = st.columns((.1, 4.1, .4, 3.5, .2))
-with row5_1:
+row5_spacer1, row5_1, row5_spacer2 = st.columns((10, 0.5, 10))
+with row5_spacer1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
@@ -194,7 +194,7 @@ with row5_1:
     fig_corr_matrix.add_trace(
         go.Scatter(mode="markers", x=[title1], y=[title2], marker_symbol=[100], marker_color="Yellow",marker_line_width=4, marker_size=40, hovertemplate='x: %{x}<br>y: %{y}<br>z: Chosen Parameters <extra></extra>'))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
-with row5_2:
+with row5_spacer2:
     trend_line = LinearRegression().fit(np.array(df_selection[col1]).reshape(-1, 1), np.array(df_selection[col2])).predict(np.array(df_selection[col1]).reshape(-1, 1))
     fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent")#,  trendline="ols")#, trendline_scope="overall")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
