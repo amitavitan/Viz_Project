@@ -159,7 +159,7 @@ with row6_1:
                         # title=f'<b>{title} Per City & Continent Map</b>',
                                )
     world_fig.update_layout(autosize=True, margin=dict(l=15, r=15, t=15, b=15), plot_bgcolor="rgba(0,0,0,0)", legend=dict(
-        orientation="h",
+        orientation="v",
         yanchor="bottom",
         y=1.02,
         xanchor="right",
