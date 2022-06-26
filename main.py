@@ -265,7 +265,7 @@ with row7_1:
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
 with row7_2:
-    fig_trend = px.scatter(data_frame=df_selection, x="Sunshine hours(City)", y="Happiness levels(Country)", color="Continent",  trendline="ols")
+    fig_trend = px.scatter(data_frame=df_selection, x="Sunshine hours(City)", y="Happiness levels(Country)", color="Continent",  trendline="ols")#, trendline_scope="overall")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
     st.plotly_chart(fig_trend, use_container_width=True)
     # fig_trend = go.Figure(data=[go.Scatter(
