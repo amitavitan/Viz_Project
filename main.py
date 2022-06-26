@@ -151,15 +151,9 @@ with row3_2:
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
-# row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 10, .2))
-row6_spacer1, row6_1, row6_spacer2, row6_2, row6_spacer3 = st.columns((.2, 2.3, .4, 4.4, .2))
-
-with row6_2:
-    selected_continent = st.sidebar.multiselect("", df["Continent"].unique(), df["Continent"].unique())
-continent_df = df.loc[df['Continent'].isin(selected_continent)]
-
+row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 10, .2))
 with row6_1:
-    world_fig = px.scatter_geo(continent_df, locations="iso_alpha", color="Continent",
+    world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
                          hover_name="City", size = plot_x_per_city_selected,
                          projection="natural earth",
                         # title=f'<b>{title} Per City & Continent Map</b>',
