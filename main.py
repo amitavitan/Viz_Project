@@ -207,24 +207,25 @@ with row5_2:
     # title1 = clean_col_name(selected_col1)
     # title2 = clean_col_name(selected_col2)
 
-    # fig_trend = go.Figure(data=[go.Scatter(x=df_selection[selected_col1], y=df_selection[selected_col2], fill=df_selection["Continent"])])# trendline="ols", trendline_scope="overall")
-    # fig_trend.update_traces(marker_line_width=1, marker_size=12)
-    # st.plotly_chart(fig_trend, use_container_width=True)
-
-    data_t = []
-    for group in df_selection["Continent"].unique():
-        print(group)
-        df_group = df_selection[df_selection['Continent'] == group]
-        trace = go.Scatter(x=df_selection[selected_col1],
-                           y=df_selection[selected_col2],
-                           mode='markers',
-                           name=group)
-        data_t.append(trace)
-
-    # Layout of the plot
-    layout = go.Layout(title='Grouping')
-    fig = go.Figure(data=data_t, layout=layout)
-    st.plotly_chart(fig, use_container_width=True)
+    fig_trend = px.scatter(
+        data_frame=df_selection, x=selected_col1, y=selected_col2, color="Continent", trendline="ols",
+        trendline_scope="overall"
+    )
+    fig_trend.update_traces(marker_line_width=1, marker_size=12)
+    # data_t = []
+    # for group in df_selection["Continent"].unique():
+    #     print(group)
+    #     df_group = df_selection[df_selection['Continent'] == group]
+    #     trace = go.Scatter(x=df_selection[selected_col1],
+    #                        y=df_selection[selected_col2],
+    #                        mode='markers',
+    #                        name=group)
+    #     data_t.append(trace)
+    #
+    # # Layout of the plot
+    # layout = go.Layout(title='Grouping')
+    # fig_trend = go.Figure(data=data_t, layout=layout)
+    st.plotly_chart(fig_trend, use_container_width=True)
 st.markdown("""---""")
 
 
