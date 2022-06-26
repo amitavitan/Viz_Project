@@ -137,7 +137,7 @@ with row3_1:
     plot_x_per_city_selected = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns,
                                             index=0)
     title = clean_col_name(plot_x_per_city_selected)
-with row3_2:
+with row2_spacer2:
     fig_product_sales = px.bar(
         df_selection,
         x="City",
