@@ -4,5 +4,5 @@ streamlit==0.86.0
 openpyxl==3.0.6
 chart_studio
 statsmodels
-scikit_learn
+scikit-learn
 
