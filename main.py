@@ -181,7 +181,7 @@ with row4_1:
     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
-row5_spacer1, row5_1, row5_spacer2 = st.columns((20, 0.5, 20))
+row5_spacer1, row5_1 = st.columns((30, 30))
 with row5_spacer1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
@@ -202,7 +202,7 @@ with row5_spacer2:
     fig_trend.add_trace(
         go.Scatter(x=df_selection[col1], y=trend_line, mode="lines", name="Trend Line", line={'dash': 'dash', 'color': 'black'}))
     st.plotly_chart(fig_trend, use_container_width=True)
-    fig_trend.update_layout(autosize=True, margin=dict(l=10, r=10, t=30, b=30), plot_bgcolor="rgba(0,0,0,0)")
+    fig_trend.update_layout(autosize=True, margin=dict(l=30, r=30, t=30, b=30), plot_bgcolor="rgba(0,0,0,0)")
 
 
 st.markdown("""---""")
