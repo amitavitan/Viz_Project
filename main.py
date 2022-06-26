@@ -126,7 +126,7 @@ st.markdown("""---""")
 ################
 ### ANALYSIS ###
 ################
-row2_spacer1, row2_1, row4_spacer2 = st.columns((.2, 7.1, .2))
+row2_spacer1, row2_1, row2_spacer2 = st.columns((.2, 7.1, .2))
 with row2_1:
     st.subheader('Analysis per City')
 row3_spacer1, row3_1, row3_spacer2, row3_2, row3_spacer3 = st.columns((.2, 2.3, .4, 4.4, .2))
