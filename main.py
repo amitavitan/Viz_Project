@@ -151,20 +151,14 @@ with row3_2:
     fig_product_sales.add_hline(y=avg, line_dash="dot")
     st.plotly_chart(fig_product_sales, use_container_width=True)
 
-row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
-with row4_1:
-    world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
-                         hover_name="City", size = plot_x_per_city_selected,
-                         projection="natural earth")
-    st.plotly_chart(world_fig, use_container_width=True)
 
 st.markdown("""---""")
 
-row5_spacer1, row5_1, row5_spacer2 = st.columns((.2, 7.1, .2))
-with row5_1:
+row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
+with row4_1:
     st.subheader('Correlation Of Attributes')
-row6_spacer1, row6_1, row6_spacer2, row6_2, row6_spacer3 = st.columns((.1, 4.1, .4, 3.5, .2))
-with row6_1:
+row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3 = st.columns((.1, 4.1, .4, 3.5, .2))
+with row5_1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
     fig_corr_matrix.add_trace(go.Heatmap(x=df_corr.columns, y=df_corr.index, z=np.array(df_corr)))
@@ -174,9 +168,15 @@ with row6_1:
     fig_corr_matrix = ff.create_annotated_heatmap(z, x=x, y=y, annotation_text=np.around(z, decimals=2), hoverinfo='z', colorscale='RdPu', showscale=True)
     fig_corr_matrix.update_layout(autosize=True, margin=dict(l=10, r=10, t=10, b=10))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
-with row6_2:
+with row5_2:
     st.subheader('Correlation Of Attributes')
 
+row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
+with row6_1:
+    world_fig = px.scatter_geo(df, locations="iso_alpha", color="Continent",
+                         hover_name="City", size = plot_x_per_city_selected,
+                         projection="natural earth")
+    st.plotly_chart(world_fig, use_container_width=True)
 
 st.markdown("""---""")
 
