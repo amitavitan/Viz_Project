@@ -6,6 +6,7 @@ from plotly.graph_objs import *
 import plotly.graph_objects as go
 import numpy as np
 import plotly.figure_factory as ff
+from sklearn.linear_model import LinearRegression
 
 
 # Emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
@@ -195,8 +196,12 @@ with row5_1:
                    marker_line_width=4, marker_size=40, hovertemplate='x: %{x}<br>y: %{y}<br>z: Chosen Parameters <extra></extra>'))
     st.plotly_chart(fig_corr_matrix, use_container_width=True)
 with row5_2:
+    trend_line = LinearRegression().fit(np.array(df_selection[col1]).reshape(-1, 1), np.array(df_selection[col2])).predict(np.array(df_selection[col1]).reshape(-1, 1))
     fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent",  trendline="ols")#, trendline_scope="overall")
     fig_trend.update_traces(marker_line_width=1, marker_size=12)
+    fig_trend.add_trace(
+        go.Scatter(x=col1, y=trend_line, mode="lines", name="Error fit", marker_color="lightgreen"),
+        secondary_y=True)
     st.plotly_chart(fig_trend, use_container_width=True)
 
 st.markdown("""---""")
