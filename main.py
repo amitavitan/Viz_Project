@@ -239,15 +239,15 @@ st.markdown("""---""")
 row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
 with row7_1:
     st.subheader('Analysis per Matchday')
-    selected_col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
-    selected_col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
-    X = df_selection[(df_selection[selected_col1] != 0) & (df_selection[selected_col2] != 0)]
-    title1 = clean_col_name(selected_col1)
-    title2 = clean_col_name(selected_col2)
+    col1 = st.selectbox("Which lifestyle parameter do you want to analyze?", options=columns, index=0)
+    col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
+    X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
+    title1 = clean_col_name(col1)
+    title2 = clean_col_name(col2)
 with row7_2:
     fig_trend = go.Figure(data=[go.Scatter(
-        x=X[selected_col1],
-        y=X[selected_col2],
+        x=X[col1],
+        y=X[col2],
         mode='markers',
         marker=dict(
             color=X['Continent'],
