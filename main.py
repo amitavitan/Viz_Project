@@ -181,7 +181,7 @@ with row4_1:
     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
     title1 = clean_col_name(col1)
     title2 = clean_col_name(col2)
-row5_spacer1, row5_1, row5_spacer2 = st.columns((10, 0.5, 10))
+row5_spacer1, row5_1, row5_spacer2 = st.columns((20, 0.5, 20))
 with row5_spacer1:
     df_corr = df_selection.corr()  # Generate correlation matrix
     fig_corr_matrix = go.Figure()
