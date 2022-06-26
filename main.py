@@ -205,22 +205,6 @@ with row5_2:
 st.markdown("""---""")
 
 
-#
-# row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3 = st.columns((.2, 3.5, .4, 3.5, .2))
-# with row7_1:
-#     st.subheader('Analysis per Matchday')
-#     col1 = st.selectbox("Choose lifestyle parameter to analyze:", options=columns, index=0)
-#     col2 = st.selectbox("Select another lifestyle parameter to investigate the relationship:", options=columns, index=1)
-#     X = df_selection[(df_selection[col1] != 0) & (df_selection[col2] != 0)]
-#     title1 = clean_col_name(col1)
-#     title2 = clean_col_name(col2)
-# with row7_2:
-#     fig_trend = px.scatter(data_frame=df_selection, x=col1, y=col2, color="Continent",  trendline="ols")#, trendline_scope="overall")
-#     fig_trend.update_traces(marker_line_width=1, marker_size=12)
-#     st.plotly_chart(fig_trend, use_container_width=True)
-#
-
-
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
             <style>
