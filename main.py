@@ -82,8 +82,8 @@ with row0_2:
     st.subheader('Streamlit App by Amit Avitan & Emily Toyber')
 row1_spacer1, row1_1, row1_spacer2 = st.columns((.1, 3.2, .1))
 with row1_1:
-    st.markdown("first paragraph - introduction")
-    st.markdown("second paragraph - explanation and github repo")
+    st.markdown("We perform visualization deals with the healthy lifestyle habits of cities and countries in the world. The database we rely on was taken from the Kaggle website and contains healthy lifestyle metrics of the 44 leading cities in the world from a report published in 2021.")
+    st.markdown("[Click to read the report](https://www.lenstore.co.uk/research/healthy-lifestyle-report/)")
 
 ####################
 ### SELECTION ###
